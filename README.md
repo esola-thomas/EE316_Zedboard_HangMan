@@ -10,7 +10,21 @@
     4.	one FTDI USB to UART 5V/3.3V adapter
     5.	one PS/2 keyboard 
     6.	one PS/2 socket 
+    
+# Contributions
 
+    LCD Nelson
+    ^^^ Software guw ^^^
+
+    Zedboard - Blinky 
+
+    7Segment i2C Pamela
+
+    USB - Pamela 
+
+    UART - Ernesto 
+
+    Module Interface - Ernesto 
   
 Your task is to design an electronic system for playing hangman using a PS2 keyboard and an LCD panel connected to Digilent's Zedboard, which communicates with a remote PC via a USB to UART adapter. The PS/2 board will be connected to the Zedboard thoguth a PMOD port JA1. The LCD will use PMOD port JB1. Upon power-up, the LCD should display only a single cursor (an underline located at the left side of the screen). For the USB-UART serial port, use a minimum baud rate of 9600, parity none, data bits 8, and stop bits 1.
 
