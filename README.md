@@ -2,8 +2,15 @@
 
 ### Specification:   Digital Hangman using FPGA
 ### Due Dates:      	Thursday, March 23 - lab demo
-###  		Monday,   March 25, written report due. 	
-    Parts List: 	
+###  		Monday,   March 25, written report due. 
+
+# Table of Contents
+1. [Parts List](#parts-list)
+2. [Contributions](#contributions)
+3. [<span style="text-decoration:underline">Installing Board File</span>](#installing-board-file-on-vivado)
+4. [Project Description](#project-description)
+
+# Parts List: 	
     1.	one Digilent's Zedboard 
     2.	one 2-line/16  character I2C LCD display module
     3.	one Sparkfun 7-segment display (with I2C)
@@ -25,7 +32,14 @@
     UART - Ernesto 
 
     Module Interface - Ernesto 
-  
+
+# Installing Board File on Vivado
+
+## Download the .zip file with Digilent boardfiles
+Clik on the link [board_files.zip](/board_files.zip) and download the zip file, then extract it and copy the board_files directory to "C:\Xilinx\Vivado\2022.2\data\boards\board_files"
+
+# Project Description 
+
 Your task is to design an electronic system for playing hangman using a PS2 keyboard and an LCD panel connected to Digilent's Zedboard, which communicates with a remote PC via a USB to UART adapter. The PS/2 board will be connected to the Zedboard thoguth a PMOD port JA1. The LCD will use PMOD port JB1. Upon power-up, the LCD should display only a single cursor (an underline located at the left side of the screen). For the USB-UART serial port, use a minimum baud rate of 9600, parity none, data bits 8, and stop bits 1.
 
 On the PC, the software should have a graphical user interface (GUI) that displays the game's status and an image of a hangman's noose. The software, written in C++, C#, Python, JAVA, or any other language, should read a text file containing a set of 5-10 words with variable lengths not exceeding 16 letters per word. The text file should be loaded at the beginning of the game.
