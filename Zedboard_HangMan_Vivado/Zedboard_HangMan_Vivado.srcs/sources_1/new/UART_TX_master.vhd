@@ -6,8 +6,8 @@ use IEEE.NUMERIC_STD.ALL;
 --	use IEEE.STD_LOGIC_UNSIGNED.ALL;	
 
 entity UART_TX_master is
-	GENERIC (
-		CONSTANT cnt_max : integer := 5208); 
+	GENERIC (	baud_rate : integer := 9600;
+				clock_freq : integer := 100000000); 
 		port (
 		reset_n				: in std_logic; 
 		clk				: in std_logic; 
@@ -19,6 +19,8 @@ entity UART_TX_master is
 end UART_TX_master;
 
 architecture TX_state_machine of UART_TX_master is
+
+constant cnt_max : integer := clock_freq / baud_rate;
 
 type stateType is (ready, Start, Send, Stop);
 signal state   : stateType;
@@ -32,7 +34,7 @@ begin
 clk_en_inst: process(clk)
 	begin
 	if rising_edge(clk) then
-		if (clk_cnt = 5208) then
+		if (clk_cnt = cnt_max) then
 			clk_cnt <= 0;
 			clk_en <= '1';
 		else
