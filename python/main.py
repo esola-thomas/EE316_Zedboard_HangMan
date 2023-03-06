@@ -175,9 +175,12 @@ def main(GAMES_TOTAL, GAMES_WON):
             sleep(5)
             break
         write_uart(uart, "Play again? (y/n)")
-        gui_text("Play again? (y/n)", 400, 300, size=50)
+        pa = gui_text("Play again? (y/n)", 400, 300, size=50)
         play_again = read_uart(uart)
         if play_again.lower() == "n":
+            write_uart(uart, "Thank you for playing!")
+            gui_text("Thank you for playing!", 400, 300, size=50, id=pa)
+            sleep(5)
             break
         else:
             # Reset game
