@@ -14,7 +14,7 @@ entity UART_TX_master is
 		ena 				: in std_logic;	
 		idata				: in std_logic_vector(7 downto 0);
 		busy 				: out std_logic := '0';
-		TX				: out std_logic
+		TX				: out std_logic := '1'
 		);
 end UART_TX_master;
 

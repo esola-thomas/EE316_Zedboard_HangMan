@@ -2,55 +2,10 @@
 <Root MajorVersion="0" MinorVersion="40">
   <CompositeFile CompositeFileTopName="Block_Diagram" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1678157583"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1678157583"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1678157583"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1678157583"/>
-    <FileCollection Name="SOURCES" Type="SOURCES">
-      <File Name="synth\Block_Diagram.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <ProcessingOrder Val="NORMAL"/>
-      </File>
-      <File Name="sim\Block_Diagram.vhd" Type="VHDL">
-        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-        <ProcessingOrder Val="NORMAL"/>
-      </File>
-      <File Name="Block_Diagram_ooc.xdc" Type="XDC">
-        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="OUT_OF_CONTEXT"/>
-        <ProcessingOrder Val="NORMAL"/>
-      </File>
-      <File Name="hw_handoff\Block_Diagram.hwh" Type="HwHandoff">
-        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="HW_HANDOFF"/>
-        <ProcessingOrder Val="NORMAL"/>
-      </File>
-      <File Name="Block_Diagram.bda">
-        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="HW_HANDOFF"/>
-        <ProcessingOrder Val="NORMAL"/>
-      </File>
-      <File Name="synth\Block_Diagram.hwdef">
-        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="HW_HANDOFF"/>
-        <ProcessingOrder Val="NORMAL"/>
-      </File>
-      <File Name="sim\Block_Diagram.protoinst">
-        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-        <ProcessingOrder Val="NORMAL"/>
-      </File>
-    </FileCollection>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1678210419"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1678210419"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1678210419"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1678210419"/>
+    <FileCollection Name="SOURCES" Type="SOURCES"/>
   </CompositeFile>
 </Root>
