@@ -1,8 +1,8 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Mon Mar  6 21:53:03 2023
---Host        : Alienware running 64-bit major release  (build 9200)
+--Date        : Tue Mar  7 15:25:21 2023
+--Host        : CB195-UL-42 running 64-bit major release  (build 9200)
 --Command     : generate_target Block_Diagram.bd
 --Design      : Block_Diagram
 --Purpose     : IP block netlist
@@ -15,86 +15,130 @@ entity Block_Diagram is
   port (
     BTND : in STD_LOGIC;
     GCLK : in STD_LOGIC;
+    LCD_scl : inout STD_LOGIC;
+    LCD_sda : inout STD_LOGIC;
     LD0 : out STD_LOGIC;
-    RX : in STD_LOGIC;
-    TX : out STD_LOGIC
+    TX : out STD_LOGIC;
+    disp_scl : inout STD_LOGIC;
+    disp_sda : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of Block_Diagram : entity is "Block_Diagram,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Block_Diagram,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=4,numReposBlks=4,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of Block_Diagram : entity is "Block_Diagram,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=Block_Diagram,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=5,numReposBlks=5,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=4,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of Block_Diagram : entity is "Block_Diagram.hwdef";
 end Block_Diagram;
 
 architecture STRUCTURE of Block_Diagram is
-  component Block_Diagram_blinky_0_0 is
-  port (
-    GCLK : in STD_LOGIC;
-    LD0 : out STD_LOGIC
-  );
-  end component Block_Diagram_blinky_0_0;
-  component Block_Diagram_UART_RX_Master_0_0 is
-  port (
-    RX : in STD_LOGIC;
-    clk : in STD_LOGIC;
-    reset_n : in STD_LOGIC;
-    RX_data : out STD_LOGIC_VECTOR ( 7 downto 0 );
-    error : out STD_LOGIC
-  );
-  end component Block_Diagram_UART_RX_Master_0_0;
   component Block_Diagram_util_vector_logic_0_0 is
   port (
     Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     Res : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component Block_Diagram_util_vector_logic_0_0;
-  component Block_Diagram_UART_TX_user_logic_0_0 is
+  component Block_Diagram_TX_Hello_UART_0_0 is
   port (
     clk : in STD_LOGIC;
     reset_n : in STD_LOGIC;
-    tx_data : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    sending : out STD_LOGIC;
     TX : out STD_LOGIC
   );
-  end component Block_Diagram_UART_TX_user_logic_0_0;
+  end component Block_Diagram_TX_Hello_UART_0_0;
+  component Block_Diagram_blinky_0_1 is
+  port (
+    GCLK : in STD_LOGIC;
+    LD0 : out STD_LOGIC;
+    LCD1 : out STD_LOGIC_VECTOR ( 127 downto 0 );
+    LCD2 : out STD_LOGIC_VECTOR ( 127 downto 0 );
+    disp : out STD_LOGIC_VECTOR ( 3 downto 0 )
+  );
+  end component Block_Diagram_blinky_0_1;
+  component Block_Diagram_lcd_user_0_0 is
+  port (
+    reset : in STD_LOGIC;
+    clk : in STD_LOGIC;
+    row1 : in STD_LOGIC_VECTOR ( 127 downto 0 );
+    row2 : in STD_LOGIC_VECTOR ( 127 downto 0 );
+    lcd_data : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    lcd_rs : out STD_LOGIC;
+    lcd_en : out STD_LOGIC;
+    lcd_on : out STD_LOGIC;
+    lcd_blon : out STD_LOGIC;
+    lcd_rw : out STD_LOGIC;
+    SDA : inout STD_LOGIC;
+    SCL : inout STD_LOGIC
+  );
+  end component Block_Diagram_lcd_user_0_0;
+  component Block_Diagram_I2C_user_logic_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    iData : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    iReset_n : in STD_LOGIC;
+    sda : inout STD_LOGIC;
+    scl : inout STD_LOGIC
+  );
+  end component Block_Diagram_I2C_user_logic_0_0;
   signal BTND_1 : STD_LOGIC;
   signal GCLK_1 : STD_LOGIC;
-  signal Net : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal RX_1 : STD_LOGIC;
-  signal UART_RX_Master_0_RX_data : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal UART_TX_user_logic_0_TX : STD_LOGIC;
+  signal Net : STD_LOGIC;
+  signal Net1 : STD_LOGIC;
+  signal Net2 : STD_LOGIC;
+  signal Net3 : STD_LOGIC;
+  signal TX_Hello_UART_0_TX : STD_LOGIC;
+  signal blinky_0_LCD1 : STD_LOGIC_VECTOR ( 127 downto 0 );
+  signal blinky_0_LCD2 : STD_LOGIC_VECTOR ( 127 downto 0 );
   signal blinky_0_LD0 : STD_LOGIC;
-  signal NLW_UART_RX_Master_0_error_UNCONNECTED : STD_LOGIC;
-  signal NLW_UART_TX_user_logic_0_sending_UNCONNECTED : STD_LOGIC;
+  signal blinky_0_disp : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_lcd_user_0_lcd_blon_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_0_lcd_en_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_0_lcd_on_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_0_lcd_rs_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_0_lcd_rw_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_0_lcd_data_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
 begin
   BTND_1 <= BTND;
   GCLK_1 <= GCLK;
   LD0 <= blinky_0_LD0;
-  RX_1 <= RX;
-  TX <= UART_TX_user_logic_0_TX;
-UART_RX_Master_0: component Block_Diagram_UART_RX_Master_0_0
+  TX <= TX_Hello_UART_0_TX;
+I2C_user_logic_0: component Block_Diagram_I2C_user_logic_0_0
      port map (
-      RX => RX_1,
-      RX_data(7 downto 0) => UART_RX_Master_0_RX_data(7 downto 0),
       clk => GCLK_1,
-      error => NLW_UART_RX_Master_0_error_UNCONNECTED,
-      reset_n => Net(0)
+      iData(3 downto 0) => blinky_0_disp(3 downto 0),
+      iReset_n => util_vector_logic_0_Res(0),
+      scl => disp_scl,
+      sda => disp_sda
     );
-UART_TX_user_logic_0: component Block_Diagram_UART_TX_user_logic_0_0
+TX_Hello_UART_0: component Block_Diagram_TX_Hello_UART_0_0
      port map (
-      TX => UART_TX_user_logic_0_TX,
+      TX => TX_Hello_UART_0_TX,
       clk => GCLK_1,
-      reset_n => Net(0),
-      sending => NLW_UART_TX_user_logic_0_sending_UNCONNECTED,
-      tx_data(7 downto 0) => UART_RX_Master_0_RX_data(7 downto 0)
+      reset_n => util_vector_logic_0_Res(0)
     );
-blinky_0: component Block_Diagram_blinky_0_0
+blinky_0: component Block_Diagram_blinky_0_1
      port map (
       GCLK => GCLK_1,
-      LD0 => blinky_0_LD0
+      LCD1(127 downto 0) => blinky_0_LCD1(127 downto 0),
+      LCD2(127 downto 0) => blinky_0_LCD2(127 downto 0),
+      LD0 => blinky_0_LD0,
+      disp(3 downto 0) => blinky_0_disp(3 downto 0)
+    );
+lcd_user_0: component Block_Diagram_lcd_user_0_0
+     port map (
+      SCL => LCD_scl,
+      SDA => LCD_sda,
+      clk => GCLK_1,
+      lcd_blon => NLW_lcd_user_0_lcd_blon_UNCONNECTED,
+      lcd_data(7 downto 0) => NLW_lcd_user_0_lcd_data_UNCONNECTED(7 downto 0),
+      lcd_en => NLW_lcd_user_0_lcd_en_UNCONNECTED,
+      lcd_on => NLW_lcd_user_0_lcd_on_UNCONNECTED,
+      lcd_rs => NLW_lcd_user_0_lcd_rs_UNCONNECTED,
+      lcd_rw => NLW_lcd_user_0_lcd_rw_UNCONNECTED,
+      reset => BTND_1,
+      row1(127 downto 0) => blinky_0_LCD1(127 downto 0),
+      row2(127 downto 0) => blinky_0_LCD2(127 downto 0)
     );
 util_vector_logic_0: component Block_Diagram_util_vector_logic_0_0
      port map (
       Op1(0) => BTND_1,
-      Res(0) => Net(0)
+      Res(0) => util_vector_logic_0_Res(0)
     );
 end STRUCTURE;

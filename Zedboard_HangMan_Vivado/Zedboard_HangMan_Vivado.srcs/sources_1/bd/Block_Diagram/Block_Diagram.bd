@@ -1,19 +1,22 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3D50329D3ED92DEF",
+      "boundary_crc": "0x258109EFA388A813",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram",
       "name": "Block_Diagram",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
-      "synth_flow_mode": "Hierarchical",
-      "tool_version": "2022.2"
+      "synth_flow_mode": "None",
+      "tool_version": "2022.2",
+      "validated": "true"
     },
     "design_tree": {
-      "blinky_0": "",
-      "UART_RX_Master_0": "",
       "util_vector_logic_0": "",
-      "UART_TX_user_logic_0": ""
+      "TX_Hello_UART_0": "",
+      "lcd_user_0": "",
+      "I2C_user_logic_0": "",
+      "ps2_keyboard_0": "",
+      "blinky_0": ""
     },
     "ports": {
       "GCLK": {
@@ -22,68 +25,64 @@
       "LD0": {
         "direction": "O"
       },
-      "RX": {
-        "direction": "I"
-      },
       "TX": {
         "direction": "O"
       },
       "BTND": {
+        "direction": "I",
+        "parameters": {
+          "PortType": {
+            "value": "undef",
+            "value_src": "ip_prop"
+          },
+          "PortType.PROP_SRC": {
+            "value": "false",
+            "value_src": "ip_prop"
+          }
+        }
+      },
+      "disp_scl": {
+        "direction": "IO"
+      },
+      "disp_sda": {
+        "direction": "IO"
+      },
+      "LCD_sda": {
+        "direction": "IO"
+      },
+      "LCD_scl": {
+        "direction": "IO"
+      },
+      "ps2_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "Block_Diagram_ps2_clk",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "ps2_data": {
         "direction": "I"
       }
     },
     "components": {
-      "blinky_0": {
-        "vlnv": "xilinx.com:module_ref:blinky:1.0",
-        "xci_name": "Block_Diagram_blinky_0_0",
-        "xci_path": "ip\\Block_Diagram_blinky_0_0\\Block_Diagram_blinky_0_0.xci",
-        "inst_hier_path": "blinky_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "blinky",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "GCLK": {
-            "direction": "I"
-          },
-          "LD0": {
-            "direction": "O"
-          }
-        }
-      },
-      "UART_RX_Master_0": {
-        "vlnv": "xilinx.com:module_ref:UART_RX_Master:1.0",
-        "xci_name": "Block_Diagram_UART_RX_Master_0_0",
-        "xci_path": "ip\\Block_Diagram_UART_RX_Master_0_0\\Block_Diagram_UART_RX_Master_0_0.xci",
-        "inst_hier_path": "UART_RX_Master_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "UART_RX_Master",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "RX": {
-            "direction": "I"
-          },
-          "clk": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "reset_n": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "RX_data": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          },
-          "error": {
-            "direction": "O"
-          }
-        }
-      },
       "util_vector_logic_0": {
         "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
         "xci_name": "Block_Diagram_util_vector_logic_0_0",
@@ -98,14 +97,14 @@
           }
         }
       },
-      "UART_TX_user_logic_0": {
-        "vlnv": "xilinx.com:module_ref:UART_TX_user_logic:1.0",
-        "xci_name": "Block_Diagram_UART_TX_user_logic_0_0",
-        "xci_path": "ip\\Block_Diagram_UART_TX_user_logic_0_0\\Block_Diagram_UART_TX_user_logic_0_0.xci",
-        "inst_hier_path": "UART_TX_user_logic_0",
+      "TX_Hello_UART_0": {
+        "vlnv": "xilinx.com:module_ref:TX_Hello_UART:1.0",
+        "xci_name": "Block_Diagram_TX_Hello_UART_0_0",
+        "xci_path": "ip\\Block_Diagram_TX_Hello_UART_0_0\\Block_Diagram_TX_Hello_UART_0_0.xci",
+        "inst_hier_path": "TX_Hello_UART_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "UART_TX_user_logic",
+          "ref_name": "TX_Hello_UART",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -117,16 +116,193 @@
             "type": "rst",
             "direction": "I"
           },
-          "tx_data": {
+          "TX": {
+            "direction": "O"
+          }
+        }
+      },
+      "lcd_user_0": {
+        "vlnv": "xilinx.com:module_ref:lcd_user:1.0",
+        "xci_name": "Block_Diagram_lcd_user_0_0",
+        "xci_path": "ip\\Block_Diagram_lcd_user_0_0\\Block_Diagram_lcd_user_0_0.xci",
+        "inst_hier_path": "lcd_user_0",
+        "parameters": {
+          "input_clk": {
+            "value": "100000000"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "lcd_user",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clk": {
+            "type": "clk",
             "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "row1": {
+            "direction": "I",
+            "left": "127",
+            "right": "0"
+          },
+          "row2": {
+            "direction": "I",
+            "left": "127",
+            "right": "0"
+          },
+          "lcd_data": {
+            "direction": "O",
             "left": "7",
             "right": "0"
           },
-          "sending": {
+          "lcd_rs": {
             "direction": "O"
           },
-          "TX": {
+          "lcd_en": {
             "direction": "O"
+          },
+          "lcd_on": {
+            "direction": "O"
+          },
+          "lcd_blon": {
+            "direction": "O"
+          },
+          "lcd_rw": {
+            "direction": "O"
+          },
+          "SDA": {
+            "direction": "IO"
+          },
+          "SCL": {
+            "direction": "IO"
+          }
+        }
+      },
+      "I2C_user_logic_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_user_logic:1.0",
+        "xci_name": "Block_Diagram_I2C_user_logic_0_0",
+        "xci_path": "ip\\Block_Diagram_I2C_user_logic_0_0\\Block_Diagram_I2C_user_logic_0_0.xci",
+        "inst_hier_path": "I2C_user_logic_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "I2C_user_logic",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "iData": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "iReset_n": {
+            "direction": "I",
+            "parameters": {
+              "PortType": {
+                "value": "undef",
+                "value_src": "ip_prop"
+              },
+              "PortType.PROP_SRC": {
+                "value": "false",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "sda": {
+            "direction": "IO"
+          },
+          "scl": {
+            "direction": "IO"
+          }
+        }
+      },
+      "ps2_keyboard_0": {
+        "vlnv": "xilinx.com:module_ref:ps2_keyboard:1.0",
+        "xci_name": "Block_Diagram_ps2_keyboard_0_0",
+        "xci_path": "ip\\Block_Diagram_ps2_keyboard_0_0\\Block_Diagram_ps2_keyboard_0_0.xci",
+        "inst_hier_path": "ps2_keyboard_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ps2_keyboard",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "ps2_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "Block_Diagram_ps2_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "ps2_data": {
+            "direction": "I"
+          },
+          "ps2_code_new": {
+            "direction": "O"
+          },
+          "ps2_code": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "blinky_0": {
+        "vlnv": "xilinx.com:module_ref:blinky:1.0",
+        "xci_name": "Block_Diagram_blinky_0_1",
+        "xci_path": "ip\\Block_Diagram_blinky_0_1\\Block_Diagram_blinky_0_1.xci",
+        "inst_hier_path": "blinky_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "blinky",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "GCLK": {
+            "direction": "I"
+          },
+          "LD0": {
+            "direction": "O"
+          },
+          "LCD1": {
+            "direction": "O",
+            "left": "127",
+            "right": "0"
+          },
+          "LCD2": {
+            "direction": "O",
+            "left": "127",
+            "right": "0"
+          },
+          "disp": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
           }
         }
       }
@@ -141,40 +317,85 @@
       "GCLK_1": {
         "ports": [
           "GCLK",
-          "blinky_0/GCLK",
-          "UART_RX_Master_0/clk",
-          "UART_TX_user_logic_0/clk"
+          "TX_Hello_UART_0/clk",
+          "lcd_user_0/clk",
+          "I2C_user_logic_0/clk",
+          "ps2_keyboard_0/clk",
+          "blinky_0/GCLK"
         ]
       },
       "Net": {
         "ports": [
-          "util_vector_logic_0/Res",
-          "UART_RX_Master_0/reset_n",
-          "UART_TX_user_logic_0/reset_n"
+          "disp_scl",
+          "I2C_user_logic_0/scl"
         ]
       },
-      "RX_1": {
+      "Net1": {
         "ports": [
-          "RX",
-          "UART_RX_Master_0/RX"
+          "disp_sda",
+          "I2C_user_logic_0/sda"
         ]
       },
-      "UART_RX_Master_0_RX_data": {
+      "Net2": {
         "ports": [
-          "UART_RX_Master_0/RX_data",
-          "UART_TX_user_logic_0/tx_data"
+          "LCD_sda",
+          "lcd_user_0/SDA"
         ]
       },
-      "UART_TX_user_logic_0_TX": {
+      "Net3": {
         "ports": [
-          "UART_TX_user_logic_0/TX",
+          "LCD_scl",
+          "lcd_user_0/SCL"
+        ]
+      },
+      "TX_Hello_UART_0_TX": {
+        "ports": [
+          "TX_Hello_UART_0/TX",
           "TX"
+        ]
+      },
+      "blinky_0_LCD1": {
+        "ports": [
+          "blinky_0/LCD1",
+          "lcd_user_0/row1"
+        ]
+      },
+      "blinky_0_LCD2": {
+        "ports": [
+          "blinky_0/LCD2",
+          "lcd_user_0/row2"
         ]
       },
       "blinky_0_LD0": {
         "ports": [
           "blinky_0/LD0",
           "LD0"
+        ]
+      },
+      "blinky_0_disp": {
+        "ports": [
+          "blinky_0/disp",
+          "I2C_user_logic_0/iData"
+        ]
+      },
+      "ps2_clk_1": {
+        "ports": [
+          "ps2_clk",
+          "ps2_keyboard_0/ps2_clk"
+        ]
+      },
+      "ps2_data_1": {
+        "ports": [
+          "ps2_data",
+          "ps2_keyboard_0/ps2_data"
+        ]
+      },
+      "util_vector_logic_0_Res": {
+        "ports": [
+          "util_vector_logic_0/Res",
+          "TX_Hello_UART_0/reset_n",
+          "I2C_user_logic_0/iReset_n",
+          "lcd_user_0/reset"
         ]
       }
     }

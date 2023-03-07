@@ -1,28 +1,42 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.49223",
-   "Default View_TopLeft":"-85,-44",
+   "Default View_ScaleFactor":"0.84",
+   "Default View_TopLeft":"-270,0",
    "ExpandedHierarchyInLayout":"",
-   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS-threadsafe
 #  -string -flagsOSRD
-preplace port port-id_GCLK -pg 1 -lvl 0 -x -10 -y 160 -defaultsOSRD
-preplace port port-id_LD0 -pg 1 -lvl 5 -x 1030 -y 230 -defaultsOSRD
-preplace port port-id_RX -pg 1 -lvl 0 -x -10 -y 130 -defaultsOSRD
-preplace port port-id_TX -pg 1 -lvl 5 -x 1030 -y 110 -defaultsOSRD
-preplace port port-id_BTND -pg 1 -lvl 0 -x -10 -y 40 -defaultsOSRD
-preplace inst blinky_0 -pg 1 -lvl 4 -x 920 -y 230 -defaultsOSRD
-preplace inst UART_RX_Master_0 -pg 1 -lvl 2 -x 440 -y 150 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 1 -x 160 -y 20 -defaultsOSRD
-preplace inst UART_TX_user_logic_0 -pg 1 -lvl 3 -x 700 -y 90 -defaultsOSRD
-preplace netloc BTND_1 1 0 1 10 20n
-preplace netloc GCLK_1 1 0 4 N 160 320 230 570J 230 N
-preplace netloc Net 1 1 2 310 70 560
-preplace netloc RX_1 1 0 2 NJ 130 N
-preplace netloc UART_RX_Master_0_RX_data 1 2 1 580 110n
-preplace netloc UART_TX_user_logic_0_TX 1 3 2 NJ 100 1010
-preplace netloc blinky_0_LD0 1 4 1 NJ 230
-levelinfo -pg 1 -10 160 440 700 920 1030
-pagesize -pg 1 -db -bbox -sgen -100 -80 1110 290
+preplace port port-id_GCLK -pg 1 -lvl 0 -x -10 -y 90 -defaultsOSRD
+preplace port port-id_LD0 -pg 1 -lvl 4 -x 890 -y 60 -defaultsOSRD
+preplace port port-id_TX -pg 1 -lvl 4 -x 890 -y 530 -defaultsOSRD
+preplace port port-id_BTND -pg 1 -lvl 0 -x -10 -y 180 -defaultsOSRD
+preplace port port-id_disp_scl -pg 1 -lvl 4 -x 890 -y 410 -defaultsOSRD
+preplace port port-id_disp_sda -pg 1 -lvl 4 -x 890 -y 390 -defaultsOSRD
+preplace port port-id_LCD_sda -pg 1 -lvl 4 -x 890 -y 260 -defaultsOSRD
+preplace port port-id_LCD_scl -pg 1 -lvl 4 -x 890 -y 280 -defaultsOSRD
+preplace port port-id_ps2_clk -pg 1 -lvl 0 -x -10 -y 440 -defaultsOSRD
+preplace port port-id_ps2_data -pg 1 -lvl 0 -x -10 -y 460 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 2 -x 430 -y 260 -defaultsOSRD -resize 83 88
+preplace inst TX_Hello_UART_0 -pg 1 -lvl 3 -x 740 -y 530 -defaultsOSRD
+preplace inst lcd_user_0 -pg 1 -lvl 3 -x 740 -y 210 -defaultsOSRD
+preplace inst I2C_user_logic_0 -pg 1 -lvl 3 -x 740 -y 400 -defaultsOSRD
+preplace inst ps2_keyboard_0 -pg 1 -lvl 1 -x 150 -y 440 -defaultsOSRD
+preplace inst blinky_0 -pg 1 -lvl 2 -x 430 -y 90 -defaultsOSRD
+preplace netloc BTND_1 1 0 2 N 180 280
+preplace netloc GCLK_1 1 0 3 10 90 280 0 570
+preplace netloc Net 1 3 1 NJ 410
+preplace netloc Net1 1 3 1 NJ 390
+preplace netloc Net2 1 3 1 NJ 260
+preplace netloc Net3 1 3 1 NJ 280
+preplace netloc TX_Hello_UART_0_TX 1 3 1 NJ 530
+preplace netloc blinky_0_LCD1 1 2 1 590 80n
+preplace netloc blinky_0_LCD2 1 2 1 560 100n
+preplace netloc blinky_0_LD0 1 2 2 NJ 60 NJ
+preplace netloc blinky_0_disp 1 2 1 550 120n
+preplace netloc util_vector_logic_0_Res 1 2 1 580 180n
+preplace netloc ps2_clk_1 1 0 1 N 440
+preplace netloc ps2_data_1 1 0 1 N 460
+levelinfo -pg 1 -10 150 430 740 890
+pagesize -pg 1 -db -bbox -sgen -120 -20 1000 600
 "
 }
 0

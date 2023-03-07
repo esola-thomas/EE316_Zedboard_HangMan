@@ -83,6 +83,17 @@ set_property PACKAGE_PIN Y9 [get_ports GCLK]
 # ----------------------------------------------------------------------------
 # JA Pmod - Bank 13
 # ----------------------------------------------------------------------------
+set_property PACKAGE_PIN AA11 [get_ports TX]
+set_property PACKAGE_PIN Y11 [get_ports RX];
+set_property IOSTANDARD LVCMOS33 [get_ports RX];
+
+set_property PACKAGE_PIN Y10 [get_ports LCD_scl]
+
+set_property PACKAGE_PIN AA9 [get_ports LCD_sda]
+
+set_property PACKAGE_PIN AB11 [get_ports disp_scl]
+
+set_property PACKAGE_PIN AB10 [get_ports disp_sda]
 #set_property PACKAGE_PIN Y11  [get_ports {JA1}];  # "JA1"
 #set_property PACKAGE_PIN AA8  [get_ports {JA10}];  # "JA10"
 #set_property PACKAGE_PIN AA11 [get_ports {JA2}];  # "JA2"
@@ -96,6 +107,13 @@ set_property PACKAGE_PIN Y9 [get_ports GCLK]
 # ----------------------------------------------------------------------------
 # JB Pmod - Bank 13
 # ----------------------------------------------------------------------------
+
+set_property PACKAGE_PIN Y11 [get_ports ps2_data];
+set_property IOSTANDARD LVCMOS33 [get_ports ps2_data];
+
+set_property PACKAGE_PIN V10 [get_ports ps2_clk];
+set_property IOSTANDARD LVCMOS33 [get_ports ps2_clk];
+
 #set_property PACKAGE_PIN W12 [get_ports {JB1}];  # "JB1"
 #set_property PACKAGE_PIN W11 [get_ports {JB2}];  # "JB2"
 #set_property PACKAGE_PIN V10 [get_ports {JB3}];  # "JB3"
@@ -371,138 +389,11 @@ set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 34]]
 set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 13]]
 
 
-
-set_property PACKAGE_PIN AA11 [get_ports TX]
-set_property PACKAGE_PIN Y11 [get_ports RX]
-
 # End of my additions
 
 
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/RX]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/TX]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0_RX_data[0]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0_RX_data[1]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0_RX_data[2]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0_RX_data[3]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0_RX_data[4]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0_RX_data[5]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0_RX_data[6]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0_RX_data[7]}]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/reset_n]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_RX_Master_0/error]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0/U0/start_state_reg[0]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0/U0/state__0[0]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0/U0/state__0[1]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0/U0/state__0[2]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0/U0/state__1[1]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_RX_Master_0/U0/state__1[2]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[0]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[1]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[2]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[3]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[4]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[5]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[6]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[7]}]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_TX_user_logic_0/U0/sending_reg]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_TX_user_logic_0/U0/sending_reg_i_1_n_0]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_TX_user_logic_0/U0/sending_reg_reg_0]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_TX_user_logic_0/U0/TX]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_TX_user_logic_0/U0/TX_master_inst_n_1]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_TX_user_logic_0/U0/TX_master_inst_n_2]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_TX_user_logic_0/U0/TX_master_inst_n_3]
-set_property MARK_DEBUG true [get_nets Block_Diagram_i/UART_TX_user_logic_0/U0/TX_master_inst_n_4]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/FSM_onehot_send_data_steps_reg_n_0_[0]}]
-set_property MARK_DEBUG true [get_nets {Block_Diagram_i/UART_TX_user_logic_0/U0/FSM_onehot_send_data_steps_reg_n_0_[2]}]
-create_clock -period 10.000 -name on_board_clock -waveform {0.000 5.000} [get_ports GCLK]
 
-create_debug_core u_ila_0 ila
-set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
-set_property ALL_PROBE_SAME_MU_CNT 4 [get_debug_cores u_ila_0]
-set_property C_ADV_TRIGGER true [get_debug_cores u_ila_0]
-set_property C_DATA_DEPTH 65536 [get_debug_cores u_ila_0]
-set_property C_EN_STRG_QUAL true [get_debug_cores u_ila_0]
-set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
-set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
-set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
-set_property port_width 1 [get_debug_ports u_ila_0/clk]
-connect_debug_port u_ila_0/clk [get_nets [list GCLK_IBUF]]
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
-set_property port_width 3 [get_debug_ports u_ila_0/probe0]
-connect_debug_port u_ila_0/probe0 [get_nets [list {Block_Diagram_i/UART_RX_Master_0/U0/state__0[0]} {Block_Diagram_i/UART_RX_Master_0/U0/state__0[1]} {Block_Diagram_i/UART_RX_Master_0/U0/state__0[2]}]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
-set_property port_width 2 [get_debug_ports u_ila_0/probe1]
-connect_debug_port u_ila_0/probe1 [get_nets [list {Block_Diagram_i/UART_RX_Master_0/U0/state__1[1]} {Block_Diagram_i/UART_RX_Master_0/U0/state__1[2]}]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
-set_property port_width 1 [get_debug_ports u_ila_0/probe2]
-connect_debug_port u_ila_0/probe2 [get_nets [list {Block_Diagram_i/UART_RX_Master_0/U0/start_state_reg[0]}]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
-set_property port_width 8 [get_debug_ports u_ila_0/probe3]
-connect_debug_port u_ila_0/probe3 [get_nets [list {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[0]} {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[1]} {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[2]} {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[3]} {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[4]} {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[5]} {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[6]} {Block_Diagram_i/UART_TX_user_logic_0/U0/TX_data_reg[7]}]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
-set_property port_width 8 [get_debug_ports u_ila_0/probe4]
-connect_debug_port u_ila_0/probe4 [get_nets [list {Block_Diagram_i/UART_RX_Master_0_RX_data[0]} {Block_Diagram_i/UART_RX_Master_0_RX_data[1]} {Block_Diagram_i/UART_RX_Master_0_RX_data[2]} {Block_Diagram_i/UART_RX_Master_0_RX_data[3]} {Block_Diagram_i/UART_RX_Master_0_RX_data[4]} {Block_Diagram_i/UART_RX_Master_0_RX_data[5]} {Block_Diagram_i/UART_RX_Master_0_RX_data[6]} {Block_Diagram_i/UART_RX_Master_0_RX_data[7]}]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe5]
-set_property port_width 1 [get_debug_ports u_ila_0/probe5]
-connect_debug_port u_ila_0/probe5 [get_nets [list Block_Diagram_i/UART_RX_Master_0/error]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe6]
-set_property port_width 1 [get_debug_ports u_ila_0/probe6]
-connect_debug_port u_ila_0/probe6 [get_nets [list {Block_Diagram_i/UART_TX_user_logic_0/U0/FSM_onehot_send_data_steps_reg_n_0_[0]}]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe7]
-set_property port_width 1 [get_debug_ports u_ila_0/probe7]
-connect_debug_port u_ila_0/probe7 [get_nets [list {Block_Diagram_i/UART_TX_user_logic_0/U0/FSM_onehot_send_data_steps_reg_n_0_[2]}]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe8]
-set_property port_width 1 [get_debug_ports u_ila_0/probe8]
-connect_debug_port u_ila_0/probe8 [get_nets [list Block_Diagram_i/reset_n]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe9]
-set_property port_width 1 [get_debug_ports u_ila_0/probe9]
-connect_debug_port u_ila_0/probe9 [get_nets [list Block_Diagram_i/RX]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe10]
-set_property port_width 1 [get_debug_ports u_ila_0/probe10]
-connect_debug_port u_ila_0/probe10 [get_nets [list Block_Diagram_i/UART_TX_user_logic_0/U0/sending_reg]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe11]
-set_property port_width 1 [get_debug_ports u_ila_0/probe11]
-connect_debug_port u_ila_0/probe11 [get_nets [list Block_Diagram_i/UART_TX_user_logic_0/U0/sending_reg_i_1_n_0]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe12]
-set_property port_width 1 [get_debug_ports u_ila_0/probe12]
-connect_debug_port u_ila_0/probe12 [get_nets [list Block_Diagram_i/UART_TX_user_logic_0/U0/sending_reg_reg_0]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe13]
-set_property port_width 1 [get_debug_ports u_ila_0/probe13]
-connect_debug_port u_ila_0/probe13 [get_nets [list Block_Diagram_i/UART_TX_user_logic_0/U0/TX]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe14]
-set_property port_width 1 [get_debug_ports u_ila_0/probe14]
-connect_debug_port u_ila_0/probe14 [get_nets [list Block_Diagram_i/TX]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe15]
-set_property port_width 1 [get_debug_ports u_ila_0/probe15]
-connect_debug_port u_ila_0/probe15 [get_nets [list Block_Diagram_i/UART_TX_user_logic_0/U0/TX_master_inst_n_1]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe16]
-set_property port_width 1 [get_debug_ports u_ila_0/probe16]
-connect_debug_port u_ila_0/probe16 [get_nets [list Block_Diagram_i/UART_TX_user_logic_0/U0/TX_master_inst_n_2]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe17]
-set_property port_width 1 [get_debug_ports u_ila_0/probe17]
-connect_debug_port u_ila_0/probe17 [get_nets [list Block_Diagram_i/UART_TX_user_logic_0/U0/TX_master_inst_n_3]]
-create_debug_port u_ila_0 probe
-set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe18]
-set_property port_width 1 [get_debug_ports u_ila_0/probe18]
-connect_debug_port u_ila_0/probe18 [get_nets [list Block_Diagram_i/UART_TX_user_logic_0/U0/TX_master_inst_n_4]]
-set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
-set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
-set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
-connect_debug_port dbg_hub/clk [get_nets GCLK_IBUF]
+set_property PULLUP true [get_ports disp_scl]
+set_property PULLUP true [get_ports disp_sda]
+set_property PULLUP true [get_ports LCD_scl]
+set_property PULLUP true [get_ports LCD_sda]

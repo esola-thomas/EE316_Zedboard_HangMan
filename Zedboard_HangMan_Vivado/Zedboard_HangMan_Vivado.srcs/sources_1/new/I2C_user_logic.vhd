@@ -4,6 +4,7 @@ use IEEE.numeric_std.all;
 --USE ieee.std_logic_unsigned.all;
 
 ENTITY I2C_user_logic IS
+    generic (input_clk : integer := 100000000);
   PORT(
     clk       : IN     STD_LOGIC;                    --system clock
     iData     : IN     STD_LOGIC_VECTOR(3 DOWNTO 0); --address of target slave
@@ -41,7 +42,7 @@ attribute S of i2c_data_wr: signal is "TRUE";
 
 COMPONENT i2c_master IS
   GENERIC(
-    input_clk : INTEGER := 50_000_000; --input clock speed from user logic in Hz
+    input_clk : INTEGER := input_clk; --input clock speed from user logic in Hz
     bus_clk   : INTEGER := 50_000);   --speed the i2c bus (scl) will run at in Hz
   PORT(
     clk       : IN     STD_LOGIC;                    --system clock
@@ -87,7 +88,7 @@ end process;
       
 Inst_i2c_master: i2c_master
   GENERIC MAP(
-    input_clk => 50_000_000,       --input clock speed from user logic in Hz
+    input_clk => input_clk,       --input clock speed from user logic in Hz
     bus_clk   => 50_000)           --speed the i2c bus (scl) will run at in Hz
   PORT MAP(
     clk       => clk,

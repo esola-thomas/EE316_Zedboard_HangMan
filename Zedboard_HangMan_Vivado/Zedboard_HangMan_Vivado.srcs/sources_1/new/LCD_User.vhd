@@ -67,7 +67,7 @@ begin
     -- I2C
     i2c_master_inst: i2c_master
     GENERIC MAP(
-         input_clk => 50_000_000,  
+         input_clk => input_clk,  
          bus_clk   => 50_000) 
     port map (
         clk => clk,
