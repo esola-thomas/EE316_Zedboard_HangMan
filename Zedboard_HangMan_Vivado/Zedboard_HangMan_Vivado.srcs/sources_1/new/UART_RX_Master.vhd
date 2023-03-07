@@ -87,16 +87,23 @@ begin
                                     start_state <= start_trigger;
                                 end if;
                             when start_trigger_confirmed =>
-                                if RX = '1' then
-                                    start_state <= start_rising;
-                                    count <= 0;
+                                if (count < clk_delay) then 
+                                    count <= count + 1;
                                 else
-                                    if (count = clock_freq) then -- RX has been low for more than a second
-                                        state <= error_state;
-                                    else
-                                        count <= count + 1;
-                                    end if; 
+                                    count <= clk_delay;
+                                    state <= read_data;
+                                    start_state <= start_trigger;
                                 end if;
+--                                if RX = '1' then
+--                                    start_state <= start_rising;
+--                                    count <= 0;
+--                                else
+--                                    if (count = clock_freq) then -- RX has been low for more than a second
+--                                        state <= error_state;
+--                                    else
+--                                        count <= count + 1;
+--                                    end if; 
+--                                end if;
                             when start_rising =>
                                 if RX = '1' then
                                     if (count < clk_delay/2) then
@@ -128,7 +135,7 @@ begin
                         else
                             count <= 0;
                             data_reg(data_bit) <= RX;
-                            if (data_bit = 8) then
+                            if (data_bit = 7) then
                                 data_bit <= 0;
                                 state <= stop;
                             else 
