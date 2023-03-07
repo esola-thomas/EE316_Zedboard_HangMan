@@ -46,48 +46,39 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:UART_TX_user_logic:1.0
+-- IP VLNV: xilinx.com:module_ref:UART_RX_Master:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY Block_Diagram_UART_TX_user_logic_0_0 IS
+ENTITY Block_Diagram_UART_RX_Master_0_0 IS
   PORT (
+    RX : IN STD_LOGIC;
     clk : IN STD_LOGIC;
     reset_n : IN STD_LOGIC;
-    tx_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    sending : OUT STD_LOGIC;
-    TX : OUT STD_LOGIC
+    RX_data : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    error : OUT STD_LOGIC
   );
-END Block_Diagram_UART_TX_user_logic_0_0;
+END Block_Diagram_UART_RX_Master_0_0;
 
-ARCHITECTURE Block_Diagram_UART_TX_user_logic_0_0_arch OF Block_Diagram_UART_TX_user_logic_0_0 IS
+ARCHITECTURE Block_Diagram_UART_RX_Master_0_0_arch OF Block_Diagram_UART_RX_Master_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF Block_Diagram_UART_TX_user_logic_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT UART_TX_user_logic IS
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF Block_Diagram_UART_RX_Master_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT UART_RX_Master IS
     GENERIC (
       baud_rate : INTEGER;
-      clock_freq : INTEGER;
-      data_bytes : INTEGER
+      clock_freq : INTEGER
     );
     PORT (
+      RX : IN STD_LOGIC;
       clk : IN STD_LOGIC;
       reset_n : IN STD_LOGIC;
-      tx_data : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-      sending : OUT STD_LOGIC;
-      TX : OUT STD_LOGIC
+      RX_data : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      error : OUT STD_LOGIC
     );
-  END COMPONENT UART_TX_user_logic;
-  ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF Block_Diagram_UART_TX_user_logic_0_0_arch: ARCHITECTURE IS "UART_TX_user_logic,Vivado 2022.2";
-  ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF Block_Diagram_UART_TX_user_logic_0_0_arch : ARCHITECTURE IS "Block_Diagram_UART_TX_user_logic_0_0,UART_TX_user_logic,{}";
-  ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF Block_Diagram_UART_TX_user_logic_0_0_arch: ARCHITECTURE IS "Block_Diagram_UART_TX_user_logic_0_0,UART_TX_user_logic,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=UART_TX_user_logic,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=VHDL,baud_rate=9600,clock_freq=100000000,data_bytes=1}";
-  ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
-  ATTRIBUTE IP_DEFINITION_SOURCE OF Block_Diagram_UART_TX_user_logic_0_0_arch: ARCHITECTURE IS "module_ref";
+  END COMPONENT UART_RX_Master;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
@@ -95,17 +86,16 @@ ARCHITECTURE Block_Diagram_UART_TX_user_logic_0_0_arch OF Block_Diagram_UART_TX_
   ATTRIBUTE X_INTERFACE_PARAMETER OF reset_n: SIGNAL IS "XIL_INTERFACENAME reset_n, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF reset_n: SIGNAL IS "xilinx.com:signal:reset:1.0 reset_n RST";
 BEGIN
-  U0 : UART_TX_user_logic
+  U0 : UART_RX_Master
     GENERIC MAP (
       baud_rate => 9600,
-      clock_freq => 100000000,
-      data_bytes => 1
+      clock_freq => 100000000
     )
     PORT MAP (
+      RX => RX,
       clk => clk,
       reset_n => reset_n,
-      tx_data => tx_data,
-      sending => sending,
-      TX => TX
+      RX_data => RX_data,
+      error => error
     );
-END Block_Diagram_UART_TX_user_logic_0_0_arch;
+END Block_Diagram_UART_RX_Master_0_0_arch;
