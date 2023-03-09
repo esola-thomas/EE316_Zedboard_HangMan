@@ -1,42 +1,46 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"0.84",
-   "Default View_TopLeft":"-270,0",
+   "Default View_TopLeft":"-152,0",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS-threadsafe
 #  -string -flagsOSRD
-preplace port port-id_GCLK -pg 1 -lvl 0 -x -10 -y 90 -defaultsOSRD
-preplace port port-id_LD0 -pg 1 -lvl 4 -x 890 -y 60 -defaultsOSRD
-preplace port port-id_TX -pg 1 -lvl 4 -x 890 -y 530 -defaultsOSRD
-preplace port port-id_BTND -pg 1 -lvl 0 -x -10 -y 180 -defaultsOSRD
-preplace port port-id_disp_scl -pg 1 -lvl 4 -x 890 -y 410 -defaultsOSRD
-preplace port port-id_disp_sda -pg 1 -lvl 4 -x 890 -y 390 -defaultsOSRD
-preplace port port-id_LCD_sda -pg 1 -lvl 4 -x 890 -y 260 -defaultsOSRD
-preplace port port-id_LCD_scl -pg 1 -lvl 4 -x 890 -y 280 -defaultsOSRD
-preplace port port-id_ps2_clk -pg 1 -lvl 0 -x -10 -y 440 -defaultsOSRD
-preplace port port-id_ps2_data -pg 1 -lvl 0 -x -10 -y 460 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 2 -x 430 -y 260 -defaultsOSRD -resize 83 88
-preplace inst TX_Hello_UART_0 -pg 1 -lvl 3 -x 740 -y 530 -defaultsOSRD
-preplace inst lcd_user_0 -pg 1 -lvl 3 -x 740 -y 210 -defaultsOSRD
-preplace inst I2C_user_logic_0 -pg 1 -lvl 3 -x 740 -y 400 -defaultsOSRD
-preplace inst ps2_keyboard_0 -pg 1 -lvl 1 -x 150 -y 440 -defaultsOSRD
-preplace inst blinky_0 -pg 1 -lvl 2 -x 430 -y 90 -defaultsOSRD
-preplace netloc BTND_1 1 0 2 N 180 280
-preplace netloc GCLK_1 1 0 3 10 90 280 0 570
-preplace netloc Net 1 3 1 NJ 410
-preplace netloc Net1 1 3 1 NJ 390
-preplace netloc Net2 1 3 1 NJ 260
-preplace netloc Net3 1 3 1 NJ 280
-preplace netloc TX_Hello_UART_0_TX 1 3 1 NJ 530
-preplace netloc blinky_0_LCD1 1 2 1 590 80n
-preplace netloc blinky_0_LCD2 1 2 1 560 100n
-preplace netloc blinky_0_LD0 1 2 2 NJ 60 NJ
-preplace netloc blinky_0_disp 1 2 1 550 120n
-preplace netloc util_vector_logic_0_Res 1 2 1 580 180n
-preplace netloc ps2_clk_1 1 0 1 N 440
-preplace netloc ps2_data_1 1 0 1 N 460
-levelinfo -pg 1 -10 150 430 740 890
-pagesize -pg 1 -db -bbox -sgen -120 -20 1000 600
+preplace port port-id_GCLK -pg 1 -lvl 0 -x -30 -y 90 -defaultsOSRD
+preplace port port-id_LD0 -pg 1 -lvl 5 -x 1180 -y 60 -defaultsOSRD
+preplace port port-id_TX -pg 1 -lvl 5 -x 1180 -y 530 -defaultsOSRD
+preplace port port-id_BTND -pg 1 -lvl 0 -x -30 -y 180 -defaultsOSRD
+preplace port port-id_disp_scl -pg 1 -lvl 5 -x 1180 -y 410 -defaultsOSRD
+preplace port port-id_disp_sda -pg 1 -lvl 5 -x 1180 -y 390 -defaultsOSRD
+preplace port port-id_LCD_sda -pg 1 -lvl 5 -x 1180 -y 260 -defaultsOSRD
+preplace port port-id_LCD_scl -pg 1 -lvl 5 -x 1180 -y 280 -defaultsOSRD
+preplace port port-id_ps2_clk -pg 1 -lvl 0 -x -30 -y 430 -defaultsOSRD
+preplace port port-id_ps2_data -pg 1 -lvl 0 -x -30 -y 470 -defaultsOSRD
+preplace port port-id_RX -pg 1 -lvl 0 -x -30 -y 450 -defaultsOSRD
+preplace inst util_vector_logic_0 -pg 1 -lvl 3 -x 710 -y 260 -defaultsOSRD -resize 83 88
+preplace inst TX_Hello_UART_0 -pg 1 -lvl 4 -x 1030 -y 530 -defaultsOSRD
+preplace inst lcd_user_0 -pg 1 -lvl 4 -x 1030 -y 210 -defaultsOSRD
+preplace inst I2C_user_logic_0 -pg 1 -lvl 4 -x 1030 -y 400 -defaultsOSRD
+preplace inst ps2_keyboard_0 -pg 1 -lvl 2 -x 430 -y 440 -defaultsOSRD
+preplace inst blinky_0 -pg 1 -lvl 3 -x 710 -y 90 -defaultsOSRD
+preplace inst RX_UART_Python_0 -pg 1 -lvl 3 -x 710 -y 450 -defaultsOSRD
+preplace netloc BTND_1 1 0 3 N 180 N 180 560
+preplace netloc GCLK_1 1 0 4 N 90 170 90 570 190 890
+preplace netloc Net 1 4 1 NJ 410
+preplace netloc Net1 1 4 1 NJ 390
+preplace netloc Net2 1 4 1 NJ 260
+preplace netloc Net3 1 4 1 NJ 280
+preplace netloc TX_Hello_UART_0_TX 1 4 1 NJ 530
+preplace netloc blinky_0_LD0 1 3 2 NJ 60 NJ
+preplace netloc ps2_clk_1 1 0 2 N 430 170
+preplace netloc ps2_data_1 1 0 2 -10 460 N
+preplace netloc util_vector_logic_0_Res 1 2 2 570 540 860
+preplace netloc RX_1 1 0 3 NJ 450 170 520 560
+preplace netloc RX_UART_Python_0_LCD_1 1 3 1 850 220n
+preplace netloc RX_UART_Python_0_LCD_2 1 3 1 880 240n
+preplace netloc RX_UART_Python_0_LCD_USER_reset 1 3 1 870 180n
+preplace netloc RX_UART_Python_0_o_segment 1 3 1 900 400n
+levelinfo -pg 1 -30 150 430 710 1030 1180
+pagesize -pg 1 -db -bbox -sgen -140 -90 1290 600
 "
 }
 0

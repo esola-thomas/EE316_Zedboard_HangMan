@@ -57,6 +57,7 @@ architecture Behavioral of Full_UART_tb is
         Port (  RX : in std_logic;
                 clk : in std_logic;
                 reset_n : in std_logic;
+                new_data : out std_logic;
                 RX_data : out std_logic_vector(7 downto 0);
                 error : out std_logic
         );
@@ -69,11 +70,12 @@ architecture Behavioral of Full_UART_tb is
     signal busy : std_logic := '0';
     signal TX : std_logic := '0';
     signal RX : std_logic := '0';
+    signal new_data : std_logic := '0';
     signal RX_data : std_logic_vector(7 downto 0) := (others => '0');
     signal error : std_logic := '0';
 begin
 
-    DUT_RX : UART_RX_master generic map(baud_rate => 9600, clock_freq => 100000000) port map(RX => RX, clk => clk, reset_n => reset_n, RX_data => RX_data, error => error);
+    DUT_RX : UART_RX_master generic map(baud_rate => 9600, clock_freq => 100000000) port map(RX => RX, clk => clk, reset_n => reset_n, new_data => new_data,  RX_data => RX_data, error => error);
     DUT_TX : UART_TX_master generic map(baud_rate => 9600, clock_freq => 100000000) port map(reset_n => reset_n, clk => clk, ena => ena, idata => idata, busy => busy, TX => TX);
 
     clk <= not clk after 5 ns;

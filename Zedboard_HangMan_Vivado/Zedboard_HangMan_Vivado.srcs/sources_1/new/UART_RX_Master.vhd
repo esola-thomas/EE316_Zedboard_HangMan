@@ -37,6 +37,7 @@ entity UART_RX_Master is
     Port (  RX : in std_logic;
             clk : in std_logic;
             reset_n : in std_logic;
+            new_data : out std_logic := '0';
             RX_data : out std_logic_vector(7 downto 0) := (others => '0');
             error : out std_logic
             );
@@ -69,6 +70,7 @@ begin
             else 
                 case state is
                     when idle =>
+                        new_data <= '0';
                         if RX = '0' then -- start bit recived
                             state <= start;
                         end if;
@@ -94,16 +96,6 @@ begin
                                     state <= read_data;
                                     start_state <= start_trigger;
                                 end if;
---                                if RX = '1' then
---                                    start_state <= start_rising;
---                                    count <= 0;
---                                else
---                                    if (count = clock_freq) then -- RX has been low for more than a second
---                                        state <= error_state;
---                                    else
---                                        count <= count + 1;
---                                    end if; 
---                                end if;
                             when start_rising =>
                                 if RX = '1' then
                                     if (count < clk_delay/2) then
@@ -137,6 +129,7 @@ begin
                             data_reg(data_bit) <= RX;
                             if (data_bit = 7) then
                                 data_bit <= 0;
+                                new_data <= '1';
                                 state <= stop;
                             else 
                                 data_bit <= data_bit + 1;

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar  7 15:55:21 2023" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar  9 15:41:16 2023" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="digilentinc.com:zedboard:part0:1.0" DEVICE="7z020" NAME="Block_Diagram" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
@@ -11,6 +11,7 @@
         <CONNECTION INSTANCE="I2C_user_logic_0" PORT="clk"/>
         <CONNECTION INSTANCE="ps2_keyboard_0" PORT="clk"/>
         <CONNECTION INSTANCE="blinky_0" PORT="GCLK"/>
+        <CONNECTION INSTANCE="RX_UART_Python_0" PORT="clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" NAME="LD0" SIGIS="undef" SIGNAME="blinky_0_LD0">
@@ -58,6 +59,11 @@
         <CONNECTION INSTANCE="ps2_keyboard_0" PORT="ps2_data"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="RX" SIGIS="undef" SIGNAME="External_Ports_RX">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RX_UART_Python_0" PORT="RX"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES/>
@@ -76,9 +82,9 @@
             <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="iData" RIGHT="0" SIGIS="undef" SIGNAME="blinky_0_disp">
+        <PORT DIR="I" LEFT="3" NAME="iData" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_o_segment">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="blinky_0" PORT="disp"/>
+            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="o_segment"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="iReset_n" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
@@ -94,6 +100,51 @@
         <PORT DIR="IO" NAME="scl" SIGIS="undef" SIGNAME="External_Ports_disp_scl">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="disp_scl"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/RX_UART_Python_0" HWVERSION="1.0" INSTANCE="RX_UART_Python_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="RX_UART_Python" VLNV="xilinx.com:module_ref:RX_UART_Python:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_RX_UART_Python_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_GCLK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="RX" SIGIS="undef" SIGNAME="External_Ports_RX">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="RX"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="LCD_1" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_LCD_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="lcd_user_0" PORT="row1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="LCD_2" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_LCD_2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="lcd_user_0" PORT="row2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="LCD_USER_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RX_UART_Python_0_LCD_USER_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="lcd_user_0" PORT="reset"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="o_segment" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_o_segment">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="I2C_user_logic_0" PORT="iData"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -142,21 +193,9 @@
             <CONNECTION INSTANCE="External_Ports" PORT="LD0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="127" NAME="LCD1" RIGHT="0" SIGIS="undef" SIGNAME="blinky_0_LCD1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="lcd_user_0" PORT="row1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="127" NAME="LCD2" RIGHT="0" SIGIS="undef" SIGNAME="blinky_0_LCD2">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="lcd_user_0" PORT="row2"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="disp" RIGHT="0" SIGIS="undef" SIGNAME="blinky_0_disp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_user_logic_0" PORT="iData"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="127" NAME="LCD1" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="127" NAME="LCD2" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="disp" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -168,9 +207,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_0_Res">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RX_UART_Python_0_LCD_USER_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="LCD_USER_reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_GCLK">
@@ -178,14 +217,14 @@
             <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="127" NAME="row1" RIGHT="0" SIGIS="undef" SIGNAME="blinky_0_LCD1">
+        <PORT DIR="I" LEFT="127" NAME="row1" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_LCD_1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="blinky_0" PORT="LCD1"/>
+            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="LCD_1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="127" NAME="row2" RIGHT="0" SIGIS="undef" SIGNAME="blinky_0_LCD2">
+        <PORT DIR="I" LEFT="127" NAME="row2" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_LCD_2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="blinky_0" PORT="LCD2"/>
+            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="LCD_2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="lcd_data" RIGHT="0" SIGIS="undef"/>
@@ -255,7 +294,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="TX_Hello_UART_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="I2C_user_logic_0" PORT="iReset_n"/>
-            <CONNECTION INSTANCE="lcd_user_0" PORT="reset"/>
+            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="reset_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

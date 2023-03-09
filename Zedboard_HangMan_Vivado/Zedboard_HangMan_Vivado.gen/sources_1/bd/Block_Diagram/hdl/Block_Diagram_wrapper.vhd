@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Tue Mar  7 15:55:21 2023
+--Date        : Thu Mar  9 15:41:16 2023
 --Host        : CB195-UL-42 running 64-bit major release  (build 9200)
 --Command     : generate_target Block_Diagram_wrapper.bd
 --Design      : Block_Diagram_wrapper
@@ -18,6 +18,7 @@ entity Block_Diagram_wrapper is
     LCD_scl : inout STD_LOGIC;
     LCD_sda : inout STD_LOGIC;
     LD0 : out STD_LOGIC;
+    RX : in STD_LOGIC;
     TX : out STD_LOGIC;
     disp_scl : inout STD_LOGIC;
     disp_sda : inout STD_LOGIC;
@@ -38,7 +39,8 @@ architecture STRUCTURE of Block_Diagram_wrapper is
     LCD_sda : inout STD_LOGIC;
     LCD_scl : inout STD_LOGIC;
     ps2_clk : in STD_LOGIC;
-    ps2_data : in STD_LOGIC
+    ps2_data : in STD_LOGIC;
+    RX : in STD_LOGIC
   );
   end component Block_Diagram;
 begin
@@ -49,6 +51,7 @@ Block_Diagram_i: component Block_Diagram
       LCD_scl => LCD_scl,
       LCD_sda => LCD_sda,
       LD0 => LD0,
+      RX => RX,
       TX => TX,
       disp_scl => disp_scl,
       disp_sda => disp_sda,

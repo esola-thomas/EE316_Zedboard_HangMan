@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x258109EFA388A813",
+      "boundary_crc": "0xCCD2F0D38E54DA78",
       "device": "xc7z020clg484-1",
       "gen_directory": "../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram",
       "name": "Block_Diagram",
@@ -16,7 +16,8 @@
       "lcd_user_0": "",
       "I2C_user_logic_0": "",
       "ps2_keyboard_0": "",
-      "blinky_0": ""
+      "blinky_0": "",
+      "RX_UART_Python_0": ""
     },
     "ports": {
       "GCLK": {
@@ -79,6 +80,9 @@
         }
       },
       "ps2_data": {
+        "direction": "I"
+      },
+      "RX": {
         "direction": "I"
       }
     },
@@ -305,6 +309,49 @@
             "right": "0"
           }
         }
+      },
+      "RX_UART_Python_0": {
+        "vlnv": "xilinx.com:module_ref:RX_UART_Python:1.0",
+        "xci_name": "Block_Diagram_RX_UART_Python_0_0",
+        "xci_path": "ip\\Block_Diagram_RX_UART_Python_0_0\\Block_Diagram_RX_UART_Python_0_0.xci",
+        "inst_hier_path": "RX_UART_Python_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "RX_UART_Python",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "RX": {
+            "direction": "I"
+          },
+          "reset_n": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "LCD_1": {
+            "direction": "O",
+            "left": "127",
+            "right": "0"
+          },
+          "LCD_2": {
+            "direction": "O",
+            "left": "127",
+            "right": "0"
+          },
+          "LCD_USER_reset": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "o_segment": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          }
+        }
       }
     },
     "nets": {
@@ -321,7 +368,8 @@
           "lcd_user_0/clk",
           "I2C_user_logic_0/clk",
           "ps2_keyboard_0/clk",
-          "blinky_0/GCLK"
+          "blinky_0/GCLK",
+          "RX_UART_Python_0/clk"
         ]
       },
       "Net": {
@@ -348,34 +396,46 @@
           "lcd_user_0/SCL"
         ]
       },
+      "RX_1": {
+        "ports": [
+          "RX",
+          "RX_UART_Python_0/RX"
+        ]
+      },
+      "RX_UART_Python_0_LCD_1": {
+        "ports": [
+          "RX_UART_Python_0/LCD_1",
+          "lcd_user_0/row1"
+        ]
+      },
+      "RX_UART_Python_0_LCD_2": {
+        "ports": [
+          "RX_UART_Python_0/LCD_2",
+          "lcd_user_0/row2"
+        ]
+      },
+      "RX_UART_Python_0_LCD_USER_reset": {
+        "ports": [
+          "RX_UART_Python_0/LCD_USER_reset",
+          "lcd_user_0/reset"
+        ]
+      },
+      "RX_UART_Python_0_o_segment": {
+        "ports": [
+          "RX_UART_Python_0/o_segment",
+          "I2C_user_logic_0/iData"
+        ]
+      },
       "TX_Hello_UART_0_TX": {
         "ports": [
           "TX_Hello_UART_0/TX",
           "TX"
         ]
       },
-      "blinky_0_LCD1": {
-        "ports": [
-          "blinky_0/LCD1",
-          "lcd_user_0/row1"
-        ]
-      },
-      "blinky_0_LCD2": {
-        "ports": [
-          "blinky_0/LCD2",
-          "lcd_user_0/row2"
-        ]
-      },
       "blinky_0_LD0": {
         "ports": [
           "blinky_0/LD0",
           "LD0"
-        ]
-      },
-      "blinky_0_disp": {
-        "ports": [
-          "blinky_0/disp",
-          "I2C_user_logic_0/iData"
         ]
       },
       "ps2_clk_1": {
@@ -395,7 +455,7 @@
           "util_vector_logic_0/Res",
           "TX_Hello_UART_0/reset_n",
           "I2C_user_logic_0/iReset_n",
-          "lcd_user_0/reset"
+          "RX_UART_Python_0/reset_n"
         ]
       }
     }
