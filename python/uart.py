@@ -5,7 +5,8 @@ from time import sleep
 # Constants for UART
 BAUD_RATE = 9600
 # PORT = '/dev/tty.usbmodem141301'
-PORT = '/dev/tty.usbmodem141101'
+# PORT = '/dev/tty.usbmodem141101'
+PORT = 'COM3'
 
 # Create UART object
 def create_uart():
@@ -27,12 +28,14 @@ def write_uart(uart, data):
     except serial.SerialTimeoutException:
         print("Write timeout.")
 
+space = " "
+space4 = "    "
 # Update the guess count on the seven segment display
 def update_seven_segment(uart, guess):
     # First bit is command, second bit is guess number
     command = "A"
     # Convert to hex
-    data = bytes(f"{command}{guess}", 'utf-8').hex()
+    data = bytes(f"{command}{guess}{space}", 'utf-8').hex()
     # Write to UART
     write_uart(uart, data)
 
@@ -46,7 +49,7 @@ def update_lcd(uart, text, row=0):
         print("Huh?")
     overflow = len(text) - 16
     first = text[:16]
-    command = bytes(f"{LCD_WRITE}{first}", 'utf-8').hex()
+    command = bytes(f"{LCD_WRITE}{first}{space4}", 'utf-8').hex()
     # print(command)
     # If less than 32 characters, pad with spaces
     if len(text) < 16:
@@ -55,7 +58,7 @@ def update_lcd(uart, text, row=0):
     for i in range(overflow+1):
         message = (first[i:] + text[16:])[:16]
         # print(message)
-        command = bytes(f"{LCD_WRITE}{message}", 'utf-8').hex()
+        command = bytes(f"{LCD_WRITE}{message}{space4}", 'utf-8').hex()
         write_uart(uart, command)
         sleep(0.5)
     
