@@ -16,6 +16,9 @@ GAMES_TOTAL = 0
 GAMES_WON = 0
 USED_WORDS = []
 
+# Create UART
+uart = create_uart()
+
 # Draw hangman
 def draw_hangman(guess):
     # Reset canvas
@@ -59,14 +62,10 @@ def gui_text(text, x, y, color="black", size=20, id=None):
         window.update()
         return text_id
 
-
 # Create window
 window = tk.Tk()
 window.title('EE316 Lab 4: Hangman')
 canvas = tk.Canvas(window, width=800, height=600)
-
-# Define UART
-uart = "test"
 
 def main(GAMES_TOTAL, GAMES_WON):
     while GAMES_TOTAL < len(words):
@@ -122,14 +121,14 @@ def main(GAMES_TOTAL, GAMES_WON):
             gui_text(f"Games Won: {GAMES_WON}", 700, 100)
 
             # Get guess from UART
-            guess = read_uart("test")
+            guess = read_uart(uart)
 
             # Check if guess is valid or has been used
             if guess not in alphabet:
-                write_uart(uart, "Invalid guess")
+                print("Invalid guess")
                 continue
             if guess in used:
-                write_uart(uart, "Guess already used")
+                print("Guess already used")
                 continue
             used.append(guess)
 
@@ -139,22 +138,24 @@ def main(GAMES_TOTAL, GAMES_WON):
                     if letters[i] == guess:
                         underscores = underscores[:i] + guess + underscores[i+1:]
                         correct.append(guess)
-                write_uart(uart, "Correct")
+                print("Correct")
             else:
                 incorrect.append(guess)
-                write_uart(uart, "Incorrect")
+                print("Incorrect")
             print(underscores)
 
             # Check if game is over
             if len(incorrect) == MAX_GUESSES:
-                write_uart(uart, "Game over: Word was " + word)
+                print(f"Sorry! The correct word was {word}")
+
                 draw_hangman(len(incorrect))
                 gui_text(underscores, 400, 200, color="red")
                 break
 
             # Check if game is won
             if len(correct) == len(letters):
-                write_uart(uart, "You win: Word was " + word)
+                print(f"You win: Word was {word}")
+                print(f"Well done! You have solved {GAMES_WON + 1} out of {GAMES_TOTAL + 1} games")
                 # Update underscore text
                 gui_text(underscores, 400, 200, color="green", id=under_id)
                 WIN = True
@@ -169,7 +170,7 @@ def main(GAMES_TOTAL, GAMES_WON):
 
         # Ask if user wants to play again
         if GAMES_TOTAL == len(words):
-            write_uart(uart, "You have played all the words, thank you for playing!")
+            print("You have played all the words, thank you for playing!")
             gui_text("You have played all the words", 400, 300, size=50)
             gui_text("Thank you for playing!", 400, 350, size=50)
             sleep(5)
@@ -178,8 +179,12 @@ def main(GAMES_TOTAL, GAMES_WON):
         pa = gui_text("Play again? (y/n)", 400, 300, size=50)
         play_again = read_uart(uart)
         if play_again.lower() == "n":
-            write_uart(uart, "Thank you for playing!")
+            print("Thank you for playing!")
             gui_text("Thank you for playing!", 400, 300, size=50, id=pa)
+            # Display final score on LCD
+            update_lcd(uart, f"{GAMES_WON} correct out of {GAMES_TOTAL}")
+            sleep(5)
+            update_lcd(uart, "GAME OVER")
             sleep(5)
             break
         else:
