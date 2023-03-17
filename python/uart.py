@@ -28,7 +28,7 @@ def write_uart(uart, data):
     except serial.SerialTimeoutException:
         print("Write timeout.")
 
-space = " "
+space = " " 
 space4 = "    "
 # Update the guess count on the seven segment display
 def update_seven_segment(uart, guess):
@@ -37,35 +37,34 @@ def update_seven_segment(uart, guess):
     # Convert to hex
     data = bytes(f"{command}{guess}{space}", 'utf-8').hex()
     # Write to UART
-    write_uart(uart, data)
+    #write_uart(uart, data)
+    message = "" + space + command + str(guess) + space
+    write_uart(uart, message.encode('utf-8'))
+ 
 
 # Update LCD with underscores/messages
-def update_lcd(uart, text, row=0):
+def update_lcd(uart, text, row):
     if row == 1:
         LCD_WRITE = "B"
     elif row == 2:
         LCD_WRITE = "C"
     else:
         print("Huh?")
-    overflow = len(text) - 16
-    first = text[:16]
-    command = bytes(f"{LCD_WRITE}{first}{space4}", 'utf-8').hex()
-    # print(command)
-    # If less than 32 characters, pad with spaces
-    if len(text) < 16:
-        command = command + "20" * (16 - len(text))
-    write_uart(uart, command)
-    for i in range(overflow+1):
-        message = (first[i:] + text[16:])[:16]
-        # print(message)
-        command = bytes(f"{LCD_WRITE}{message}{space4}", 'utf-8').hex()
-        write_uart(uart, command)
-        sleep(0.5)
+
+    text_size = len(text)
+
+    if text_size < 16:
+        for i in range(16 - text_size):
+            text += " "
+    
+    message = "" + space + LCD_WRITE + text[:16] + space4
+    write_uart(uart, message.encode('utf-8'))
     
 # Read from UART
 def read_uart(uart):
     data = uart.read().decode('utf-8')
-    print(f"Read: {data}")
+    if (data != ""):
+        print(f"Read: {data}")
     return data
 
 # Close UART

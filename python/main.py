@@ -19,6 +19,11 @@ USED_WORDS = []
 # Create UART
 uart = create_uart()
 
+update_seven_segment(uart, 0)
+update_lcd(uart, "New Game        ", 1)
+sleep(0.1)
+update_lcd(uart, "Hangman Game    ", 2)
+
 # Draw hangman
 def draw_hangman(guess):
     # Reset canvas
@@ -67,7 +72,43 @@ window = tk.Tk()
 window.title('EE316 Lab 4: Hangman')
 canvas = tk.Canvas(window, width=800, height=600)
 
-def main(GAMES_TOTAL, GAMES_WON):
+def play_again(pa):
+     # Get choice from UART FPGA
+    choice = read_uart(uart)
+
+    # Check if guess is valid or has been used
+    if (choice != ""):
+        if choice == "y" or choice == "Y":
+            print("Restarting game...")
+            # Reset game
+            draw_hangman(-1)
+            gui_text(-1, 400, 200)
+            main()
+        elif choice == "n" or choice == "N":
+            print("Thank you for playing!")
+            gui_text("Thank you for playing!", 400, 300, size=50, id=pa)
+            # Display final score on LCD
+            print ("DEBUG Games Won"+  str(GAMES_WON) +  " of  Games Total" + str(GAMES_TOTAL))
+            print (GAMES_TOTAL)
+            update_lcd(uart, "Won " + str(GAMES_WON) +  " of " + str(GAMES_TOTAL), 1)
+            sleep(0.1)
+            update_lcd(uart, "   GAME  OVER   ", 2)
+            sleep(10)
+            exit()
+        else:
+            print ("Invalid input. Please try again.")
+            play_again(pa)
+    else:
+        print("Waiting for input... y/n")
+        sleep(2)
+        play_again(pa)
+
+def main():
+    global GAMES_TOTAL 
+    global GAMES_WON 
+    global USED_WORDS
+    last_guess = " "
+
     while GAMES_TOTAL < len(words):
         # Get random word
         while True:
@@ -128,7 +169,9 @@ def main(GAMES_TOTAL, GAMES_WON):
                 print("Invalid guess")
                 continue
             if guess in used:
-                print("Guess already used")
+                if (guess != last_guess and guess != ""):
+                    print("'" +guess + "' already used")
+                last_guess = guess
                 continue
             used.append(guess)
 
@@ -143,6 +186,9 @@ def main(GAMES_TOTAL, GAMES_WON):
                 incorrect.append(guess)
                 print("Incorrect")
             print(underscores)
+
+            # Update seven segment display
+            update_seven_segment(uart, len(incorrect))
 
             # Check if game is over
             if len(incorrect) == MAX_GUESSES:
@@ -163,6 +209,7 @@ def main(GAMES_TOTAL, GAMES_WON):
 
         # Increment games total
         GAMES_TOTAL += 1
+        print ("DEBUG GAMES_TOTAL: " + str(GAMES_TOTAL))
 
         # Check if game is won
         if WIN:
@@ -175,22 +222,9 @@ def main(GAMES_TOTAL, GAMES_WON):
             gui_text("Thank you for playing!", 400, 350, size=50)
             sleep(5)
             break
-        write_uart(uart, "Play again? (y/n)")
         pa = gui_text("Play again? (y/n)", 400, 300, size=50)
-        play_again = read_uart(uart)
-        if play_again.lower() == "n":
-            print("Thank you for playing!")
-            gui_text("Thank you for playing!", 400, 300, size=50, id=pa)
-            # Display final score on LCD
-            update_lcd(uart, f"{GAMES_WON} correct out of {GAMES_TOTAL}")
-            sleep(5)
-            update_lcd(uart, "GAME OVER")
-            sleep(5)
-            break
-        else:
-            # Reset game
-            draw_hangman(-1)
-            gui_text(-1, 400, 200)
-
+        print ("Play again? (y/n)")
+        play_again(pa)
+            
 # Run main
-main(GAMES_TOTAL, GAMES_WON)
+main()
