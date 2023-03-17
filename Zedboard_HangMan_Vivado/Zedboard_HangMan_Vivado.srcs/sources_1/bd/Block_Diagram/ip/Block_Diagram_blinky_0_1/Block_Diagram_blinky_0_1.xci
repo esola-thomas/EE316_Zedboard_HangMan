@@ -12,7 +12,7 @@
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
-        "BASE_BOARD_PART": [ { "value": "digilentinc.com:zedboard:part0:1.0" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:zedboard:part0:1.1" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
         "DEVICE": [ { "value": "xc7z020" } ],
         "PACKAGE": [ { "value": "clg484" } ],
@@ -39,10 +39,7 @@
     "boundary": {
       "ports": {
         "GCLK": [ { "direction": "in" } ],
-        "LD0": [ { "direction": "out", "driver_value": "0x0" } ],
-        "LCD1": [ { "direction": "out", "size_left": "127", "size_right": "0" } ],
-        "LCD2": [ { "direction": "out", "size_left": "127", "size_right": "0" } ],
-        "disp": [ { "direction": "out", "size_left": "3", "size_right": "0" } ]
+        "LD0": [ { "direction": "out", "driver_value": "0x0" } ]
       }
     }
   }

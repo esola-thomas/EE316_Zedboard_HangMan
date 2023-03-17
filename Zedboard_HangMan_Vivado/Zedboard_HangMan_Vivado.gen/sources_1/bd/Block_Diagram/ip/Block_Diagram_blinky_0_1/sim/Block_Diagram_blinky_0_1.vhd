@@ -56,10 +56,7 @@ USE ieee.numeric_std.ALL;
 ENTITY Block_Diagram_blinky_0_1 IS
   PORT (
     GCLK : IN STD_LOGIC;
-    LD0 : OUT STD_LOGIC;
-    LCD1 : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
-    LCD2 : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
-    disp : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+    LD0 : OUT STD_LOGIC
   );
 END Block_Diagram_blinky_0_1;
 
@@ -69,19 +66,13 @@ ARCHITECTURE Block_Diagram_blinky_0_1_arch OF Block_Diagram_blinky_0_1 IS
   COMPONENT blinky IS
     PORT (
       GCLK : IN STD_LOGIC;
-      LD0 : OUT STD_LOGIC;
-      LCD1 : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
-      LCD2 : OUT STD_LOGIC_VECTOR(127 DOWNTO 0);
-      disp : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+      LD0 : OUT STD_LOGIC
     );
   END COMPONENT blinky;
 BEGIN
   U0 : blinky
     PORT MAP (
       GCLK => GCLK,
-      LD0 => LD0,
-      LCD1 => LCD1,
-      LCD2 => LCD2,
-      disp => disp
+      LD0 => LD0
     );
 END Block_Diagram_blinky_0_1_arch;

@@ -1,22 +1,18 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "Block_Diagram_TX_Hello_UART_0_0",
-    "cell_name": "TX_Hello_UART_0",
-    "component_reference": "xilinx.com:module_ref:TX_Hello_UART:1.0",
+    "xci_name": "Block_Diagram_TX_ps2_keyboard_logic_0_0",
+    "cell_name": "TX_ps2_keyboard_logic_0",
+    "component_reference": "xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0",
     "ip_revision": "1",
-    "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_TX_Hello_UART_0_0",
+    "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_TX_ps2_keyboard_logic_0_0",
     "parameters": {
       "component_parameters": {
-        "message_length": [ { "value": "21", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "Component_Name": [ { "value": "Block_Diagram_TX_Hello_UART_0_0", "resolve_type": "user", "usage": "all" } ]
-      },
-      "model_parameters": {
-        "message_length": [ { "value": "21", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "Component_Name": [ { "value": "Block_Diagram_TX_ps2_keyboard_logic_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
-        "BASE_BOARD_PART": [ { "value": "digilentinc.com:zedboard:part0:1.0" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:zedboard:part0:1.1" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
         "DEVICE": [ { "value": "xc7z020" } ],
         "PACKAGE": [ { "value": "clg484" } ],
@@ -33,7 +29,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "1" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_TX_Hello_UART_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_TX_ps2_keyboard_logic_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2022.2" } ],
@@ -43,6 +39,8 @@
     "boundary": {
       "ports": {
         "clk": [ { "direction": "in" } ],
+        "ps2_new": [ { "direction": "in" } ],
+        "p2_code": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
         "reset_n": [ { "direction": "in" } ],
         "TX": [ { "direction": "out" } ]
       },

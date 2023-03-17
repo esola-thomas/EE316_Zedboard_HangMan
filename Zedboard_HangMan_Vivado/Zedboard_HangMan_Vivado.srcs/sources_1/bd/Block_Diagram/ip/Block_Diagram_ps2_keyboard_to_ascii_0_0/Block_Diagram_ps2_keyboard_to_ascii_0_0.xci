@@ -1,24 +1,24 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "Block_Diagram_ps2_keyboard_0_0",
-    "cell_name": "ps2_keyboard_0",
-    "component_reference": "xilinx.com:module_ref:ps2_keyboard:1.0",
+    "xci_name": "Block_Diagram_ps2_keyboard_to_ascii_0_0",
+    "cell_name": "ps2_keyboard_to_ascii_0",
+    "component_reference": "xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0",
     "ip_revision": "1",
-    "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_ps2_keyboard_0_0",
+    "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_ps2_keyboard_to_ascii_0_0",
     "parameters": {
       "component_parameters": {
-        "clk_freq": [ { "value": "50000000", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "debounce_counter_size": [ { "value": "8", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "Component_Name": [ { "value": "Block_Diagram_ps2_keyboard_0_0", "resolve_type": "user", "usage": "all" } ]
+        "clk_freq": [ { "value": "100000000", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "ps2_debounce_counter_size": [ { "value": "3", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "Component_Name": [ { "value": "Block_Diagram_ps2_keyboard_to_ascii_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
-        "clk_freq": [ { "value": "50000000", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "debounce_counter_size": [ { "value": "8", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "clk_freq": [ { "value": "100000000", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "ps2_debounce_counter_size": [ { "value": "3", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
-        "BASE_BOARD_PART": [ { "value": "digilentinc.com:zedboard:part0:1.0" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:zedboard:part0:1.1" } ],
         "BOARD_CONNECTIONS": [ { "value": "" } ],
         "DEVICE": [ { "value": "xc7z020" } ],
         "PACKAGE": [ { "value": "clg484" } ],
@@ -35,7 +35,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "1" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_ps2_keyboard_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_ps2_keyboard_to_ascii_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2022.2" } ],
@@ -47,8 +47,8 @@
         "clk": [ { "direction": "in" } ],
         "ps2_clk": [ { "direction": "in" } ],
         "ps2_data": [ { "direction": "in" } ],
-        "ps2_code_new": [ { "direction": "out" } ],
-        "ps2_code": [ { "direction": "out", "size_left": "7", "size_right": "0" } ]
+        "ascii_new": [ { "direction": "out" } ],
+        "ascii_code": [ { "direction": "out", "size_left": "7", "size_right": "0" } ]
       },
       "interfaces": {
         "clk": {

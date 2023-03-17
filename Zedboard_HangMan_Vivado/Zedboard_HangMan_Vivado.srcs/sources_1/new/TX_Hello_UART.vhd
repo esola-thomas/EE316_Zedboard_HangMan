@@ -62,8 +62,9 @@ architecture Behavioral of TX_Hello_UART is
 
     type sending_state_type is (idle, sending, next_char);
     signal sending_state : sending_state_type := idle;
-
-    signal time_delay : integer := 100000000;
+    
+    constant time_max : integer := 1000000000;
+    signal time_delay : integer := time_max;
 begin
     
     -- Instantiate UART_TX_master component
@@ -74,11 +75,12 @@ begin
 
         if (reset_n = '0') then
             message_index <= 1;
-            time_delay <= 100000000;
+            time_delay <= 0;
+            sending_state <= idle;
         elsif (rising_edge(clk)) then
             case sending_state is 
                 when idle =>
-                    if (time_delay >= 100000000) then 
+                    if (time_delay >= time_max) then 
                         idata <= message((8 * message_index)-1 downto (8 * message_index)-8);
                         ena <= '1';
                         if (busy = '1') then 

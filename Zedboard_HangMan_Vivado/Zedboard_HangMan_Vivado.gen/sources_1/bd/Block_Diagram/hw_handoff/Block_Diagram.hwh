@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar  9 15:41:16 2023" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 16 21:55:11 2023" VIVADOVERSION="2022.2">
 
-  <SYSTEMINFO ARCH="zynq" BOARD="digilentinc.com:zedboard:part0:1.0" DEVICE="7z020" NAME="Block_Diagram" PACKAGE="clg484" SPEEDGRADE="-1"/>
+  <SYSTEMINFO ARCH="zynq" BOARD="digilentinc.com:zedboard:part0:1.1" DEVICE="7z020" NAME="Block_Diagram" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
     <PORT DIR="I" NAME="GCLK" SIGIS="undef" SIGNAME="External_Ports_GCLK">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TX_Hello_UART_0" PORT="clk"/>
-        <CONNECTION INSTANCE="lcd_user_0" PORT="clk"/>
         <CONNECTION INSTANCE="I2C_user_logic_0" PORT="clk"/>
-        <CONNECTION INSTANCE="ps2_keyboard_0" PORT="clk"/>
         <CONNECTION INSTANCE="blinky_0" PORT="GCLK"/>
+        <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="clk"/>
+        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="clk"/>
+        <CONNECTION INSTANCE="lcd_user_0" PORT="clk"/>
         <CONNECTION INSTANCE="RX_UART_Python_0" PORT="clk"/>
       </CONNECTIONS>
     </PORT>
@@ -19,9 +19,9 @@
         <CONNECTION INSTANCE="blinky_0" PORT="LD0"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="TX" SIGIS="undef" SIGNAME="TX_Hello_UART_0_TX">
+    <PORT DIR="O" NAME="TX" SIGIS="undef" SIGNAME="TX_ps2_keyboard_logic_0_TX">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TX_Hello_UART_0" PORT="TX"/>
+        <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="TX"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="BTND" SIGIS="undef" SIGNAME="External_Ports_BTND">
@@ -51,12 +51,12 @@
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="ps2_clk" SIGIS="clk" SIGNAME="External_Ports_ps2_clk">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ps2_keyboard_0" PORT="ps2_clk"/>
+        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="ps2_clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="ps2_data" SIGIS="undef" SIGNAME="External_Ports_ps2_data">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ps2_keyboard_0" PORT="ps2_data"/>
+        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="ps2_data"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="RX" SIGIS="undef" SIGNAME="External_Ports_RX">
@@ -150,11 +150,10 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/TX_Hello_UART_0" HWVERSION="1.0" INSTANCE="TX_Hello_UART_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TX_Hello_UART" VLNV="xilinx.com:module_ref:TX_Hello_UART:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/TX_ps2_keyboard_logic_0" HWVERSION="1.0" INSTANCE="TX_ps2_keyboard_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TX_ps2_keyboard_logic" VLNV="xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="message_length" VALUE="21"/>
-        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_TX_Hello_UART_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_TX_ps2_keyboard_logic_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -163,12 +162,22 @@
             <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="ps2_new" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_0_ascii_new">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="ascii_new"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="p2_code" RIGHT="0" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_0_ascii_code">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="ascii_code"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_0_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="TX" SIGIS="undef" SIGNAME="TX_Hello_UART_0_TX">
+        <PORT DIR="O" NAME="TX" SIGIS="undef" SIGNAME="TX_ps2_keyboard_logic_0_TX">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="TX"/>
           </CONNECTIONS>
@@ -193,9 +202,6 @@
             <CONNECTION INSTANCE="External_Ports" PORT="LD0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="127" NAME="LCD1" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="127" NAME="LCD2" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="3" NAME="disp" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -246,12 +252,12 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/ps2_keyboard_0" HWVERSION="1.0" INSTANCE="ps2_keyboard_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ps2_keyboard" VLNV="xilinx.com:module_ref:ps2_keyboard:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/ps2_keyboard_to_ascii_0" HWVERSION="1.0" INSTANCE="ps2_keyboard_to_ascii_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ps2_keyboard_to_ascii" VLNV="xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="clk_freq" VALUE="50000000"/>
-        <PARAMETER NAME="debounce_counter_size" VALUE="8"/>
-        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_ps2_keyboard_0_0"/>
+        <PARAMETER NAME="clk_freq" VALUE="100000000"/>
+        <PARAMETER NAME="ps2_debounce_counter_size" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_ps2_keyboard_to_ascii_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -270,8 +276,16 @@
             <CONNECTION INSTANCE="External_Ports" PORT="ps2_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="ps2_code_new" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="7" NAME="ps2_code" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ascii_new" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_0_ascii_new">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="ps2_new"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="ascii_code" RIGHT="0" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_0_ascii_code">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="p2_code"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -292,8 +306,8 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TX_Hello_UART_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="I2C_user_logic_0" PORT="iReset_n"/>
+            <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="reset_n"/>
             <CONNECTION INSTANCE="RX_UART_Python_0" PORT="reset_n"/>
           </CONNECTIONS>
         </PORT>

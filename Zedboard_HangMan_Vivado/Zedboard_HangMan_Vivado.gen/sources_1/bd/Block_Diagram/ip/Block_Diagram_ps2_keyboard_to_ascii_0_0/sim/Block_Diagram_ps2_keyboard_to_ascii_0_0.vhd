@@ -46,56 +46,56 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:TX_Hello_UART:1.0
+-- IP VLNV: xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY Block_Diagram_TX_Hello_UART_0_0 IS
+ENTITY Block_Diagram_ps2_keyboard_to_ascii_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
-    reset_n : IN STD_LOGIC;
-    TX : OUT STD_LOGIC
+    ps2_clk : IN STD_LOGIC;
+    ps2_data : IN STD_LOGIC;
+    ascii_new : OUT STD_LOGIC;
+    ascii_code : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
-END Block_Diagram_TX_Hello_UART_0_0;
+END Block_Diagram_ps2_keyboard_to_ascii_0_0;
 
-ARCHITECTURE Block_Diagram_TX_Hello_UART_0_0_arch OF Block_Diagram_TX_Hello_UART_0_0 IS
+ARCHITECTURE Block_Diagram_ps2_keyboard_to_ascii_0_0_arch OF Block_Diagram_ps2_keyboard_to_ascii_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF Block_Diagram_TX_Hello_UART_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT TX_Hello_UART IS
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF Block_Diagram_ps2_keyboard_to_ascii_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT ps2_keyboard_to_ascii IS
     GENERIC (
-      message_length : INTEGER
+      clk_freq : INTEGER;
+      ps2_debounce_counter_size : INTEGER
     );
     PORT (
       clk : IN STD_LOGIC;
-      reset_n : IN STD_LOGIC;
-      TX : OUT STD_LOGIC
+      ps2_clk : IN STD_LOGIC;
+      ps2_data : IN STD_LOGIC;
+      ascii_new : OUT STD_LOGIC;
+      ascii_code : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
-  END COMPONENT TX_Hello_UART;
-  ATTRIBUTE X_CORE_INFO : STRING;
-  ATTRIBUTE X_CORE_INFO OF Block_Diagram_TX_Hello_UART_0_0_arch: ARCHITECTURE IS "TX_Hello_UART,Vivado 2022.2";
-  ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
-  ATTRIBUTE CHECK_LICENSE_TYPE OF Block_Diagram_TX_Hello_UART_0_0_arch : ARCHITECTURE IS "Block_Diagram_TX_Hello_UART_0_0,TX_Hello_UART,{}";
-  ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF Block_Diagram_TX_Hello_UART_0_0_arch: ARCHITECTURE IS "Block_Diagram_TX_Hello_UART_0_0,TX_Hello_UART,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=TX_Hello_UART,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=VHDL,message_length=21}";
-  ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
-  ATTRIBUTE IP_DEFINITION_SOURCE OF Block_Diagram_TX_Hello_UART_0_0_arch: ARCHITECTURE IS "module_ref";
+  END COMPONENT ps2_keyboard_to_ascii;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF reset_n: SIGNAL IS "XIL_INTERFACENAME reset_n, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF reset_n: SIGNAL IS "xilinx.com:signal:reset:1.0 reset_n RST";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF ps2_clk: SIGNAL IS "XIL_INTERFACENAME ps2_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN Block_Diagram_ps2_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF ps2_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 ps2_clk CLK";
 BEGIN
-  U0 : TX_Hello_UART
+  U0 : ps2_keyboard_to_ascii
     GENERIC MAP (
-      message_length => 21
+      clk_freq => 100000000,
+      ps2_debounce_counter_size => 3
     )
     PORT MAP (
       clk => clk,
-      reset_n => reset_n,
-      TX => TX
+      ps2_clk => ps2_clk,
+      ps2_data => ps2_data,
+      ascii_new => ascii_new,
+      ascii_code => ascii_code
     );
-END Block_Diagram_TX_Hello_UART_0_0_arch;
+END Block_Diagram_ps2_keyboard_to_ascii_0_0_arch;

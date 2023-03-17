@@ -79,7 +79,7 @@ begin
 
     LUT_inst : LUT_charhex_bit port map (hex_i => RX_data_reg, bit_o => LUT_bit);
 
-    process (new_data, reset_n) begin
+    process (clk, new_data, reset_n) begin
 
         if (reset_n = '0') then
             LCD_1 <= x"5F202020202020202020202020202020";

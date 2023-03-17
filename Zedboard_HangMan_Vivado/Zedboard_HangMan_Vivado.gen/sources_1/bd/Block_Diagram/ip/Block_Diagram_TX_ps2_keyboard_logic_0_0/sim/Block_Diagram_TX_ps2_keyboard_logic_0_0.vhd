@@ -46,56 +46,48 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:ps2_keyboard:1.0
+-- IP VLNV: xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY Block_Diagram_ps2_keyboard_0_0 IS
+ENTITY Block_Diagram_TX_ps2_keyboard_logic_0_0 IS
   PORT (
     clk : IN STD_LOGIC;
-    ps2_clk : IN STD_LOGIC;
-    ps2_data : IN STD_LOGIC;
-    ps2_code_new : OUT STD_LOGIC;
-    ps2_code : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    ps2_new : IN STD_LOGIC;
+    p2_code : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    reset_n : IN STD_LOGIC;
+    TX : OUT STD_LOGIC
   );
-END Block_Diagram_ps2_keyboard_0_0;
+END Block_Diagram_TX_ps2_keyboard_logic_0_0;
 
-ARCHITECTURE Block_Diagram_ps2_keyboard_0_0_arch OF Block_Diagram_ps2_keyboard_0_0 IS
+ARCHITECTURE Block_Diagram_TX_ps2_keyboard_logic_0_0_arch OF Block_Diagram_TX_ps2_keyboard_logic_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF Block_Diagram_ps2_keyboard_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT ps2_keyboard IS
-    GENERIC (
-      clk_freq : INTEGER;
-      debounce_counter_size : INTEGER
-    );
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF Block_Diagram_TX_ps2_keyboard_logic_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT TX_ps2_keyboard_logic IS
     PORT (
       clk : IN STD_LOGIC;
-      ps2_clk : IN STD_LOGIC;
-      ps2_data : IN STD_LOGIC;
-      ps2_code_new : OUT STD_LOGIC;
-      ps2_code : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+      ps2_new : IN STD_LOGIC;
+      p2_code : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      reset_n : IN STD_LOGIC;
+      TX : OUT STD_LOGIC
     );
-  END COMPONENT ps2_keyboard;
+  END COMPONENT TX_ps2_keyboard_logic;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF ps2_clk: SIGNAL IS "XIL_INTERFACENAME ps2_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN Block_Diagram_ps2_clk, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF ps2_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 ps2_clk CLK";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF reset_n: SIGNAL IS "XIL_INTERFACENAME reset_n, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF reset_n: SIGNAL IS "xilinx.com:signal:reset:1.0 reset_n RST";
 BEGIN
-  U0 : ps2_keyboard
-    GENERIC MAP (
-      clk_freq => 50000000,
-      debounce_counter_size => 8
-    )
+  U0 : TX_ps2_keyboard_logic
     PORT MAP (
       clk => clk,
-      ps2_clk => ps2_clk,
-      ps2_data => ps2_data,
-      ps2_code_new => ps2_code_new,
-      ps2_code => ps2_code
+      ps2_new => ps2_new,
+      p2_code => p2_code,
+      reset_n => reset_n,
+      TX => TX
     );
-END Block_Diagram_ps2_keyboard_0_0_arch;
+END Block_Diagram_TX_ps2_keyboard_logic_0_0_arch;

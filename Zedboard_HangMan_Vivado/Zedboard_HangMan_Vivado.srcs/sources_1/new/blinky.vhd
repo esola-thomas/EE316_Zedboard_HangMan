@@ -33,10 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity blinky is
     Port ( GCLK : in STD_LOGIC;
-        LD0 : out STD_LOGIC := '0';
-        LCD1 : out STD_LOGIC_Vector (127 downto 0);
-        LCD2 : out STD_LOGIC_Vector (127 downto 0);
-        disp : out std_logic_vector (3 downto 0));
+        LD0 : out STD_LOGIC := '0');
 end blinky;
 
 architecture Behavioral of blinky is
@@ -55,9 +52,6 @@ process (GCLK) begin
     end if;
 end process;
 
-LCD1 <= X"43687269737469616E20202020202020";
-LCD2 <= X"202020536368697A6F706872656E6961";
-disp <= "0100";
 LD0 <= LED_state;
 
 end Behavioral;

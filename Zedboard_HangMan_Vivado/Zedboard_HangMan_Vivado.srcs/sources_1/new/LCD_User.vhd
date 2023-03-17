@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity lcd_user is
-    generic(input_clk: integer := 50_000_000);
+    generic(input_clk: integer := 100_000_000);
     port(
         reset: in std_logic;
         clk: in std_logic;

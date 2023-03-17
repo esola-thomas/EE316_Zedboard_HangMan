@@ -12,11 +12,11 @@
     },
     "design_tree": {
       "util_vector_logic_0": "",
-      "TX_Hello_UART_0": "",
-      "lcd_user_0": "",
       "I2C_user_logic_0": "",
-      "ps2_keyboard_0": "",
       "blinky_0": "",
+      "TX_ps2_keyboard_logic_0": "",
+      "ps2_keyboard_to_ascii_0": "",
+      "lcd_user_0": "",
       "RX_UART_Python_0": ""
     },
     "ports": {
@@ -101,14 +101,14 @@
           }
         }
       },
-      "TX_Hello_UART_0": {
-        "vlnv": "xilinx.com:module_ref:TX_Hello_UART:1.0",
-        "xci_name": "Block_Diagram_TX_Hello_UART_0_0",
-        "xci_path": "ip\\Block_Diagram_TX_Hello_UART_0_0\\Block_Diagram_TX_Hello_UART_0_0.xci",
-        "inst_hier_path": "TX_Hello_UART_0",
+      "I2C_user_logic_0": {
+        "vlnv": "xilinx.com:module_ref:I2C_user_logic:1.0",
+        "xci_name": "Block_Diagram_I2C_user_logic_0_0",
+        "xci_path": "ip\\Block_Diagram_I2C_user_logic_0_0\\Block_Diagram_I2C_user_logic_0_0.xci",
+        "inst_hier_path": "I2C_user_logic_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "TX_Hello_UART",
+          "ref_name": "I2C_user_logic",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -116,12 +116,122 @@
             "type": "clk",
             "direction": "I"
           },
+          "iData": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "iReset_n": {
+            "direction": "I",
+            "parameters": {
+              "PortType": {
+                "value": "undef",
+                "value_src": "ip_prop"
+              },
+              "PortType.PROP_SRC": {
+                "value": "false",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "sda": {
+            "direction": "IO"
+          },
+          "scl": {
+            "direction": "IO"
+          }
+        }
+      },
+      "blinky_0": {
+        "vlnv": "xilinx.com:module_ref:blinky:1.0",
+        "xci_name": "Block_Diagram_blinky_0_1",
+        "xci_path": "ip\\Block_Diagram_blinky_0_1\\Block_Diagram_blinky_0_1.xci",
+        "inst_hier_path": "blinky_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "blinky",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "GCLK": {
+            "direction": "I"
+          },
+          "LD0": {
+            "direction": "O"
+          }
+        }
+      },
+      "TX_ps2_keyboard_logic_0": {
+        "vlnv": "xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0",
+        "xci_name": "Block_Diagram_TX_ps2_keyboard_logic_0_0",
+        "xci_path": "ip\\Block_Diagram_TX_ps2_keyboard_logic_0_0\\Block_Diagram_TX_ps2_keyboard_logic_0_0.xci",
+        "inst_hier_path": "TX_ps2_keyboard_logic_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "TX_ps2_keyboard_logic",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "ps2_new": {
+            "direction": "I"
+          },
+          "p2_code": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
           "reset_n": {
             "type": "rst",
             "direction": "I"
           },
           "TX": {
             "direction": "O"
+          }
+        }
+      },
+      "ps2_keyboard_to_ascii_0": {
+        "vlnv": "xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0",
+        "xci_name": "Block_Diagram_ps2_keyboard_to_ascii_0_0",
+        "xci_path": "ip\\Block_Diagram_ps2_keyboard_to_ascii_0_0\\Block_Diagram_ps2_keyboard_to_ascii_0_0.xci",
+        "inst_hier_path": "ps2_keyboard_to_ascii_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ps2_keyboard_to_ascii",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "ps2_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "Block_Diagram_ps2_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "ps2_data": {
+            "direction": "I"
+          },
+          "ascii_new": {
+            "direction": "O"
+          },
+          "ascii_code": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
           }
         }
       },
@@ -193,123 +303,6 @@
           }
         }
       },
-      "I2C_user_logic_0": {
-        "vlnv": "xilinx.com:module_ref:I2C_user_logic:1.0",
-        "xci_name": "Block_Diagram_I2C_user_logic_0_0",
-        "xci_path": "ip\\Block_Diagram_I2C_user_logic_0_0\\Block_Diagram_I2C_user_logic_0_0.xci",
-        "inst_hier_path": "I2C_user_logic_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "I2C_user_logic",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "iData": {
-            "direction": "I",
-            "left": "3",
-            "right": "0"
-          },
-          "iReset_n": {
-            "direction": "I",
-            "parameters": {
-              "PortType": {
-                "value": "undef",
-                "value_src": "ip_prop"
-              },
-              "PortType.PROP_SRC": {
-                "value": "false",
-                "value_src": "ip_prop"
-              }
-            }
-          },
-          "sda": {
-            "direction": "IO"
-          },
-          "scl": {
-            "direction": "IO"
-          }
-        }
-      },
-      "ps2_keyboard_0": {
-        "vlnv": "xilinx.com:module_ref:ps2_keyboard:1.0",
-        "xci_name": "Block_Diagram_ps2_keyboard_0_0",
-        "xci_path": "ip\\Block_Diagram_ps2_keyboard_0_0\\Block_Diagram_ps2_keyboard_0_0.xci",
-        "inst_hier_path": "ps2_keyboard_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "ps2_keyboard",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I"
-          },
-          "ps2_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "Block_Diagram_ps2_clk",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "ps2_data": {
-            "direction": "I"
-          },
-          "ps2_code_new": {
-            "direction": "O"
-          },
-          "ps2_code": {
-            "direction": "O",
-            "left": "7",
-            "right": "0"
-          }
-        }
-      },
-      "blinky_0": {
-        "vlnv": "xilinx.com:module_ref:blinky:1.0",
-        "xci_name": "Block_Diagram_blinky_0_1",
-        "xci_path": "ip\\Block_Diagram_blinky_0_1\\Block_Diagram_blinky_0_1.xci",
-        "inst_hier_path": "blinky_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "blinky",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "GCLK": {
-            "direction": "I"
-          },
-          "LD0": {
-            "direction": "O"
-          },
-          "LCD1": {
-            "direction": "O",
-            "left": "127",
-            "right": "0"
-          },
-          "LCD2": {
-            "direction": "O",
-            "left": "127",
-            "right": "0"
-          },
-          "disp": {
-            "direction": "O",
-            "left": "3",
-            "right": "0"
-          }
-        }
-      },
       "RX_UART_Python_0": {
         "vlnv": "xilinx.com:module_ref:RX_UART_Python:1.0",
         "xci_name": "Block_Diagram_RX_UART_Python_0_0",
@@ -364,11 +357,11 @@
       "GCLK_1": {
         "ports": [
           "GCLK",
-          "TX_Hello_UART_0/clk",
-          "lcd_user_0/clk",
           "I2C_user_logic_0/clk",
-          "ps2_keyboard_0/clk",
           "blinky_0/GCLK",
+          "TX_ps2_keyboard_logic_0/clk",
+          "ps2_keyboard_to_ascii_0/clk",
+          "lcd_user_0/clk",
           "RX_UART_Python_0/clk"
         ]
       },
@@ -426,9 +419,9 @@
           "I2C_user_logic_0/iData"
         ]
       },
-      "TX_Hello_UART_0_TX": {
+      "TX_ps2_keyboard_logic_0_TX": {
         "ports": [
-          "TX_Hello_UART_0/TX",
+          "TX_ps2_keyboard_logic_0/TX",
           "TX"
         ]
       },
@@ -441,20 +434,32 @@
       "ps2_clk_1": {
         "ports": [
           "ps2_clk",
-          "ps2_keyboard_0/ps2_clk"
+          "ps2_keyboard_to_ascii_0/ps2_clk"
         ]
       },
       "ps2_data_1": {
         "ports": [
           "ps2_data",
-          "ps2_keyboard_0/ps2_data"
+          "ps2_keyboard_to_ascii_0/ps2_data"
+        ]
+      },
+      "ps2_keyboard_to_ascii_0_ascii_code": {
+        "ports": [
+          "ps2_keyboard_to_ascii_0/ascii_code",
+          "TX_ps2_keyboard_logic_0/p2_code"
+        ]
+      },
+      "ps2_keyboard_to_ascii_0_ascii_new": {
+        "ports": [
+          "ps2_keyboard_to_ascii_0/ascii_new",
+          "TX_ps2_keyboard_logic_0/ps2_new"
         ]
       },
       "util_vector_logic_0_Res": {
         "ports": [
           "util_vector_logic_0/Res",
-          "TX_Hello_UART_0/reset_n",
           "I2C_user_logic_0/iReset_n",
+          "TX_ps2_keyboard_logic_0/reset_n",
           "RX_UART_Python_0/reset_n"
         ]
       }

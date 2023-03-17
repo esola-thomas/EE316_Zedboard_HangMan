@@ -4,7 +4,7 @@ proc init_gui { IPINST } {
   #Adding Page
   set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
   ipgui::add_param $IPINST -name "clk_freq" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "debounce_counter_size" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "ps2_debounce_counter_size" -parent ${Page_0}
 
 
 }
@@ -18,12 +18,12 @@ proc validate_PARAM_VALUE.clk_freq { PARAM_VALUE.clk_freq } {
 	return true
 }
 
-proc update_PARAM_VALUE.debounce_counter_size { PARAM_VALUE.debounce_counter_size } {
-	# Procedure called to update debounce_counter_size when any of the dependent parameters in the arguments change
+proc update_PARAM_VALUE.ps2_debounce_counter_size { PARAM_VALUE.ps2_debounce_counter_size } {
+	# Procedure called to update ps2_debounce_counter_size when any of the dependent parameters in the arguments change
 }
 
-proc validate_PARAM_VALUE.debounce_counter_size { PARAM_VALUE.debounce_counter_size } {
-	# Procedure called to validate debounce_counter_size
+proc validate_PARAM_VALUE.ps2_debounce_counter_size { PARAM_VALUE.ps2_debounce_counter_size } {
+	# Procedure called to validate ps2_debounce_counter_size
 	return true
 }
 
@@ -33,8 +33,8 @@ proc update_MODELPARAM_VALUE.clk_freq { MODELPARAM_VALUE.clk_freq PARAM_VALUE.cl
 	set_property value [get_property value ${PARAM_VALUE.clk_freq}] ${MODELPARAM_VALUE.clk_freq}
 }
 
-proc update_MODELPARAM_VALUE.debounce_counter_size { MODELPARAM_VALUE.debounce_counter_size PARAM_VALUE.debounce_counter_size } {
+proc update_MODELPARAM_VALUE.ps2_debounce_counter_size { MODELPARAM_VALUE.ps2_debounce_counter_size PARAM_VALUE.ps2_debounce_counter_size } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.debounce_counter_size}] ${MODELPARAM_VALUE.debounce_counter_size}
+	set_property value [get_property value ${PARAM_VALUE.ps2_debounce_counter_size}] ${MODELPARAM_VALUE.ps2_debounce_counter_size}
 }
 
