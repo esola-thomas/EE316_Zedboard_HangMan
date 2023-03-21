@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
---Date        : Tue Mar 21 14:18:19 2023
+--Date        : Tue Mar 21 18:48:54 2023
 --Host        : eniac-solathomas running 64-bit Red Hat Enterprise Linux release 8.7 (Ootpa)
 --Command     : generate_target Block_Diagram.bd
 --Design      : Block_Diagram
@@ -116,12 +116,12 @@ architecture STRUCTURE of Block_Diagram is
   signal ps2_keyboard_to_ascii_0_ascii_code : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal ps2_keyboard_to_ascii_0_ascii_new : STD_LOGIC;
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal NLW_lcd_user_0_lcd_blon_UNCONNECTED : STD_LOGIC;
-  signal NLW_lcd_user_0_lcd_en_UNCONNECTED : STD_LOGIC;
-  signal NLW_lcd_user_0_lcd_on_UNCONNECTED : STD_LOGIC;
-  signal NLW_lcd_user_0_lcd_rs_UNCONNECTED : STD_LOGIC;
-  signal NLW_lcd_user_0_lcd_rw_UNCONNECTED : STD_LOGIC;
-  signal NLW_lcd_user_0_lcd_data_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_lcd_user_logic_inst_lcd_blon_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_logic_inst_lcd_en_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_logic_inst_lcd_on_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_logic_inst_lcd_rs_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_logic_inst_lcd_rw_UNCONNECTED : STD_LOGIC;
+  signal NLW_lcd_user_logic_inst_lcd_data_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of ps2_clk : signal is "xilinx.com:signal:clock:1.0 CLK.PS2_CLK CLK";
   attribute X_INTERFACE_PARAMETER : string;
@@ -134,15 +134,12 @@ begin
   TX <= TX_ps2_keyboard_logic_0_TX;
   ps2_clk_1 <= ps2_clk;
   ps2_data_1 <= ps2_data;
-I2C_user_logic_0: component Block_Diagram_I2C_user_logic_0_0
+Not_inst: component Block_Diagram_util_vector_logic_0_0
      port map (
-      clk => GCLK_1,
-      iData(3 downto 0) => RX_UART_Python_0_o_segment(3 downto 0),
-      iReset_n => util_vector_logic_0_Res(0),
-      scl => disp_scl,
-      sda => disp_sda
+      Op1(0) => BTND_1,
+      Res(0) => util_vector_logic_0_Res(0)
     );
-RX_UART_Python_0: component Block_Diagram_RX_UART_Python_0_0
+RX_UART_Python_inst: component Block_Diagram_RX_UART_Python_0_0
      port map (
       LCD_1(127 downto 0) => RX_UART_Python_0_LCD_1(127 downto 0),
       LCD_2(127 downto 0) => RX_UART_Python_0_LCD_2(127 downto 0),
@@ -152,7 +149,15 @@ RX_UART_Python_0: component Block_Diagram_RX_UART_Python_0_0
       o_segment(3 downto 0) => RX_UART_Python_0_o_segment(3 downto 0),
       reset_n => util_vector_logic_0_Res(0)
     );
-TX_ps2_keyboard_logic_0: component Block_Diagram_TX_ps2_keyboard_logic_0_0
+Segment_display_user_logic_inst: component Block_Diagram_I2C_user_logic_0_0
+     port map (
+      clk => GCLK_1,
+      iData(3 downto 0) => RX_UART_Python_0_o_segment(3 downto 0),
+      iReset_n => util_vector_logic_0_Res(0),
+      scl => disp_scl,
+      sda => disp_sda
+    );
+TX_ps2_to_python_inst: component Block_Diagram_TX_ps2_keyboard_logic_0_0
      port map (
       TX => TX_ps2_keyboard_logic_0_TX,
       clk => GCLK_1,
@@ -160,37 +165,32 @@ TX_ps2_keyboard_logic_0: component Block_Diagram_TX_ps2_keyboard_logic_0_0
       ps2_new => ps2_keyboard_to_ascii_0_ascii_new,
       reset_n => util_vector_logic_0_Res(0)
     );
-blinky_0: component Block_Diagram_blinky_0_1
+blinky_inst: component Block_Diagram_blinky_0_1
      port map (
       GCLK => GCLK_1,
       LD0 => blinky_0_LD0
     );
-lcd_user_0: component Block_Diagram_lcd_user_0_0
+lcd_user_logic_inst: component Block_Diagram_lcd_user_0_0
      port map (
       SCL => LCD_scl,
       SDA => LCD_sda,
       clk => GCLK_1,
-      lcd_blon => NLW_lcd_user_0_lcd_blon_UNCONNECTED,
-      lcd_data(7 downto 0) => NLW_lcd_user_0_lcd_data_UNCONNECTED(7 downto 0),
-      lcd_en => NLW_lcd_user_0_lcd_en_UNCONNECTED,
-      lcd_on => NLW_lcd_user_0_lcd_on_UNCONNECTED,
-      lcd_rs => NLW_lcd_user_0_lcd_rs_UNCONNECTED,
-      lcd_rw => NLW_lcd_user_0_lcd_rw_UNCONNECTED,
+      lcd_blon => NLW_lcd_user_logic_inst_lcd_blon_UNCONNECTED,
+      lcd_data(7 downto 0) => NLW_lcd_user_logic_inst_lcd_data_UNCONNECTED(7 downto 0),
+      lcd_en => NLW_lcd_user_logic_inst_lcd_en_UNCONNECTED,
+      lcd_on => NLW_lcd_user_logic_inst_lcd_on_UNCONNECTED,
+      lcd_rs => NLW_lcd_user_logic_inst_lcd_rs_UNCONNECTED,
+      lcd_rw => NLW_lcd_user_logic_inst_lcd_rw_UNCONNECTED,
       reset => RX_UART_Python_0_LCD_USER_reset,
       row1(127 downto 0) => RX_UART_Python_0_LCD_1(127 downto 0),
       row2(127 downto 0) => RX_UART_Python_0_LCD_2(127 downto 0)
     );
-ps2_keyboard_to_ascii_0: component Block_Diagram_ps2_keyboard_to_ascii_0_0
+ps2_keyboard_to_ascii_inst: component Block_Diagram_ps2_keyboard_to_ascii_0_0
      port map (
       ascii_code(7 downto 0) => ps2_keyboard_to_ascii_0_ascii_code(7 downto 0),
       ascii_new => ps2_keyboard_to_ascii_0_ascii_new,
       clk => GCLK_1,
       ps2_clk => ps2_clk_1,
       ps2_data => ps2_data_1
-    );
-util_vector_logic_0: component Block_Diagram_util_vector_logic_0_0
-     port map (
-      Op1(0) => BTND_1,
-      Res(0) => util_vector_logic_0_Res(0)
     );
 end STRUCTURE;

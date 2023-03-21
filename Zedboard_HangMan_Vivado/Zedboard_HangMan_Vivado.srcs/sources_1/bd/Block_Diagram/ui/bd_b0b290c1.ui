@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.724242",
-   "Default View_TopLeft":"-449,1",
+   "Default View_ScaleFactor":"1.17653",
+   "Default View_TopLeft":"-65,3",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -16,13 +16,13 @@ preplace port port-id_LCD_scl -pg 1 -lvl 4 -x 820 -y 200 -defaultsOSRD
 preplace port port-id_ps2_clk -pg 1 -lvl 0 -x -10 -y 470 -defaultsOSRD
 preplace port port-id_ps2_data -pg 1 -lvl 0 -x -10 -y 490 -defaultsOSRD
 preplace port port-id_RX -pg 1 -lvl 0 -x -10 -y 170 -defaultsOSRD
-preplace inst util_vector_logic_0 -pg 1 -lvl 1 -x 110 -y 240 -defaultsOSRD -resize 83 88
-preplace inst I2C_user_logic_0 -pg 1 -lvl 3 -x 660 -y 320 -defaultsOSRD
-preplace inst blinky_0 -pg 1 -lvl 3 -x 660 -y 600 -defaultsOSRD
-preplace inst TX_ps2_keyboard_logic_0 -pg 1 -lvl 3 -x 660 -y 470 -defaultsOSRD
-preplace inst ps2_keyboard_to_ascii_0 -pg 1 -lvl 2 -x 360 -y 470 -defaultsOSRD
-preplace inst lcd_user_0 -pg 1 -lvl 3 -x 660 -y 130 -defaultsOSRD
-preplace inst RX_UART_Python_0 -pg 1 -lvl 2 -x 360 -y 170 -defaultsOSRD
+preplace inst Segment_display_user_logic_inst -pg 1 -lvl 3 -x 660 -y 320 -defaultsOSRD
+preplace inst blinky_inst -pg 1 -lvl 3 -x 660 -y 600 -defaultsOSRD
+preplace inst lcd_user_logic_inst -pg 1 -lvl 3 -x 660 -y 130 -defaultsOSRD
+preplace inst TX_ps2_to_python_inst -pg 1 -lvl 3 -x 660 -y 470 -defaultsOSRD
+preplace inst ps2_keyboard_to_ascii_inst -pg 1 -lvl 2 -x 360 -y 470 -defaultsOSRD
+preplace inst RX_UART_Python_inst -pg 1 -lvl 2 -x 360 -y 170 -defaultsOSRD
+preplace inst Not_inst -pg 1 -lvl 1 -x 110 -y 240 -defaultsOSRD -resize 83 88
 preplace netloc BTND_1 1 0 1 NJ 240
 preplace netloc GCLK_1 1 0 3 NJ 80 210 80 510
 preplace netloc Net 1 3 1 NJ 330

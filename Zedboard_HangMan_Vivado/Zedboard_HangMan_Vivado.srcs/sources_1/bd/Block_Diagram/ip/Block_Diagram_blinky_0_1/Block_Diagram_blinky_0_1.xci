@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "Block_Diagram_blinky_0_1",
-    "cell_name": "blinky_0",
+    "cell_name": "blinky_inst",
     "component_reference": "xilinx.com:module_ref:blinky:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_blinky_0_1",

@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "Block_Diagram_util_vector_logic_0_0",
-    "cell_name": "util_vector_logic_0",
+    "cell_name": "Not_inst",
     "component_reference": "xilinx.com:ip:util_vector_logic:2.0",
     "ip_revision": "2",
     "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_util_vector_logic_0_0",

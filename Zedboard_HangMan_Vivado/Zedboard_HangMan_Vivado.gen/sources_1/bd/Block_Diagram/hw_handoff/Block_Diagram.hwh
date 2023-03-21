@@ -1,67 +1,67 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 21 14:18:20 2023" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 21 18:48:55 2023" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="Block_Diagram" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
     <PORT DIR="I" NAME="GCLK" SIGIS="undef" SIGNAME="External_Ports_GCLK">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_user_logic_0" PORT="clk"/>
-        <CONNECTION INSTANCE="blinky_0" PORT="GCLK"/>
-        <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="clk"/>
-        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="clk"/>
-        <CONNECTION INSTANCE="lcd_user_0" PORT="clk"/>
-        <CONNECTION INSTANCE="RX_UART_Python_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Segment_display_user_logic_inst" PORT="clk"/>
+        <CONNECTION INSTANCE="blinky_inst" PORT="GCLK"/>
+        <CONNECTION INSTANCE="TX_ps2_to_python_inst" PORT="clk"/>
+        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_inst" PORT="clk"/>
+        <CONNECTION INSTANCE="lcd_user_logic_inst" PORT="clk"/>
+        <CONNECTION INSTANCE="RX_UART_Python_inst" PORT="clk"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="LD0" SIGIS="undef" SIGNAME="blinky_0_LD0">
+    <PORT DIR="O" NAME="LD0" SIGIS="undef" SIGNAME="blinky_inst_LD0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="blinky_0" PORT="LD0"/>
+        <CONNECTION INSTANCE="blinky_inst" PORT="LD0"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="TX" SIGIS="undef" SIGNAME="TX_ps2_keyboard_logic_0_TX">
+    <PORT DIR="O" NAME="TX" SIGIS="undef" SIGNAME="TX_ps2_to_python_inst_TX">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="TX"/>
+        <CONNECTION INSTANCE="TX_ps2_to_python_inst" PORT="TX"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="BTND" SIGIS="undef" SIGNAME="External_Ports_BTND">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="util_vector_logic_0" PORT="Op1"/>
+        <CONNECTION INSTANCE="Not_inst" PORT="Op1"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" NAME="disp_scl" SIGIS="undef" SIGNAME="External_Ports_disp_scl">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_user_logic_0" PORT="scl"/>
+        <CONNECTION INSTANCE="Segment_display_user_logic_inst" PORT="scl"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" NAME="disp_sda" SIGIS="undef" SIGNAME="External_Ports_disp_sda">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="I2C_user_logic_0" PORT="sda"/>
+        <CONNECTION INSTANCE="Segment_display_user_logic_inst" PORT="sda"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" NAME="LCD_sda" SIGIS="undef" SIGNAME="External_Ports_LCD_sda">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="lcd_user_0" PORT="SDA"/>
+        <CONNECTION INSTANCE="lcd_user_logic_inst" PORT="SDA"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" NAME="LCD_scl" SIGIS="undef" SIGNAME="External_Ports_LCD_scl">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="lcd_user_0" PORT="SCL"/>
+        <CONNECTION INSTANCE="lcd_user_logic_inst" PORT="SCL"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="ps2_clk" SIGIS="clk" SIGNAME="External_Ports_ps2_clk">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="ps2_clk"/>
+        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_inst" PORT="ps2_clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="ps2_data" SIGIS="undef" SIGNAME="External_Ports_ps2_data">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="ps2_data"/>
+        <CONNECTION INSTANCE="ps2_keyboard_to_ascii_inst" PORT="ps2_data"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="RX" SIGIS="undef" SIGNAME="External_Ports_RX">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="RX_UART_Python_0" PORT="RX"/>
+        <CONNECTION INSTANCE="RX_UART_Python_inst" PORT="RX"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -69,43 +69,32 @@
   <EXTERNALINTERFACES/>
 
   <MODULES>
-    <MODULE COREREVISION="1" FULLNAME="/I2C_user_logic_0" HWVERSION="1.0" INSTANCE="I2C_user_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="I2C_user_logic" VLNV="xilinx.com:module_ref:I2C_user_logic:1.0">
+    <MODULE COREREVISION="2" FULLNAME="/Not_inst" HWVERSION="2.0" INSTANCE="Not_inst" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="input_clk" VALUE="100000000"/>
-        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_I2C_user_logic_0_0"/>
+        <PARAMETER NAME="C_OPERATION" VALUE="not"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_util_vector_logic_0_0"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_notgate.png"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_GCLK">
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_BTND">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="BTND"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="iData" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_o_segment">
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Not_inst_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="o_segment"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="iReset_n" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="IO" NAME="sda" SIGIS="undef" SIGNAME="External_Ports_disp_sda">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="disp_sda"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="IO" NAME="scl" SIGIS="undef" SIGNAME="External_Ports_disp_scl">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="disp_scl"/>
+            <CONNECTION INSTANCE="Segment_display_user_logic_inst" PORT="iReset_n"/>
+            <CONNECTION INSTANCE="TX_ps2_to_python_inst" PORT="reset_n"/>
+            <CONNECTION INSTANCE="RX_UART_Python_inst" PORT="reset_n"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/RX_UART_Python_0" HWVERSION="1.0" INSTANCE="RX_UART_Python_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="RX_UART_Python" VLNV="xilinx.com:module_ref:RX_UART_Python:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/RX_UART_Python_inst" HWVERSION="1.0" INSTANCE="RX_UART_Python_inst" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="RX_UART_Python" VLNV="xilinx.com:module_ref:RX_UART_Python:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_RX_UART_Python_0_0"/>
@@ -122,35 +111,71 @@
             <CONNECTION INSTANCE="External_Ports" PORT="RX"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_0_Res">
+        <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Not_inst_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="Not_inst" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="127" NAME="LCD_1" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_LCD_1">
+        <PORT DIR="O" LEFT="127" NAME="LCD_1" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_inst_LCD_1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="lcd_user_0" PORT="row1"/>
+            <CONNECTION INSTANCE="lcd_user_logic_inst" PORT="row1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="127" NAME="LCD_2" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_LCD_2">
+        <PORT DIR="O" LEFT="127" NAME="LCD_2" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_inst_LCD_2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="lcd_user_0" PORT="row2"/>
+            <CONNECTION INSTANCE="lcd_user_logic_inst" PORT="row2"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="LCD_USER_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RX_UART_Python_0_LCD_USER_reset">
+        <PORT DIR="O" NAME="LCD_USER_reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RX_UART_Python_inst_LCD_USER_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="lcd_user_0" PORT="reset"/>
+            <CONNECTION INSTANCE="lcd_user_logic_inst" PORT="reset"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="o_segment" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_o_segment">
+        <PORT DIR="O" LEFT="3" NAME="o_segment" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_inst_o_segment">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_user_logic_0" PORT="iData"/>
+            <CONNECTION INSTANCE="Segment_display_user_logic_inst" PORT="iData"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/TX_ps2_keyboard_logic_0" HWVERSION="1.0" INSTANCE="TX_ps2_keyboard_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TX_ps2_keyboard_logic" VLNV="xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/Segment_display_user_logic_inst" HWVERSION="1.0" INSTANCE="Segment_display_user_logic_inst" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="I2C_user_logic" VLNV="xilinx.com:module_ref:I2C_user_logic:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="input_clk" VALUE="100000000"/>
+        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_I2C_user_logic_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_GCLK">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="iData" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_inst_o_segment">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RX_UART_Python_inst" PORT="o_segment"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="iReset_n" SIGIS="undef" SIGNAME="Not_inst_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Not_inst" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="IO" NAME="sda" SIGIS="undef" SIGNAME="External_Ports_disp_sda">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="disp_sda"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="IO" NAME="scl" SIGIS="undef" SIGNAME="External_Ports_disp_scl">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="disp_scl"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/TX_ps2_to_python_inst" HWVERSION="1.0" INSTANCE="TX_ps2_to_python_inst" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TX_ps2_keyboard_logic" VLNV="xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_TX_ps2_keyboard_logic_0_0"/>
@@ -162,22 +187,22 @@
             <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ps2_new" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_0_ascii_new">
+        <PORT DIR="I" NAME="ps2_new" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_inst_ascii_new">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="ascii_new"/>
+            <CONNECTION INSTANCE="ps2_keyboard_to_ascii_inst" PORT="ascii_new"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="7" NAME="p2_code" RIGHT="0" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_0_ascii_code">
+        <PORT DIR="I" LEFT="7" NAME="p2_code" RIGHT="0" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_inst_ascii_code">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="ps2_keyboard_to_ascii_0" PORT="ascii_code"/>
+            <CONNECTION INSTANCE="ps2_keyboard_to_ascii_inst" PORT="ascii_code"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_0_Res">
+        <PORT DIR="I" NAME="reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Not_inst_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="util_vector_logic_0" PORT="Res"/>
+            <CONNECTION INSTANCE="Not_inst" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="TX" SIGIS="undef" SIGNAME="TX_ps2_keyboard_logic_0_TX">
+        <PORT DIR="O" NAME="TX" SIGIS="undef" SIGNAME="TX_ps2_to_python_inst_TX">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="TX"/>
           </CONNECTIONS>
@@ -185,7 +210,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/blinky_0" HWVERSION="1.0" INSTANCE="blinky_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="blinky" VLNV="xilinx.com:module_ref:blinky:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/blinky_inst" HWVERSION="1.0" INSTANCE="blinky_inst" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="blinky" VLNV="xilinx.com:module_ref:blinky:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_blinky_0_1"/>
@@ -197,7 +222,7 @@
             <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="LD0" SIGIS="undef" SIGNAME="blinky_0_LD0">
+        <PORT DIR="O" NAME="LD0" SIGIS="undef" SIGNAME="blinky_inst_LD0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="LD0"/>
           </CONNECTIONS>
@@ -205,7 +230,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/lcd_user_0" HWVERSION="1.0" INSTANCE="lcd_user_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="lcd_user" VLNV="xilinx.com:module_ref:lcd_user:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/lcd_user_logic_inst" HWVERSION="1.0" INSTANCE="lcd_user_logic_inst" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="lcd_user" VLNV="xilinx.com:module_ref:lcd_user:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="input_clk" VALUE="100000000"/>
@@ -213,9 +238,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RX_UART_Python_0_LCD_USER_reset">
+        <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RX_UART_Python_inst_LCD_USER_reset">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="LCD_USER_reset"/>
+            <CONNECTION INSTANCE="RX_UART_Python_inst" PORT="LCD_USER_reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_GCLK">
@@ -223,14 +248,14 @@
             <CONNECTION INSTANCE="External_Ports" PORT="GCLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="127" NAME="row1" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_LCD_1">
+        <PORT DIR="I" LEFT="127" NAME="row1" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_inst_LCD_1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="LCD_1"/>
+            <CONNECTION INSTANCE="RX_UART_Python_inst" PORT="LCD_1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="127" NAME="row2" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_0_LCD_2">
+        <PORT DIR="I" LEFT="127" NAME="row2" RIGHT="0" SIGIS="undef" SIGNAME="RX_UART_Python_inst_LCD_2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="LCD_2"/>
+            <CONNECTION INSTANCE="RX_UART_Python_inst" PORT="LCD_2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="lcd_data" RIGHT="0" SIGIS="undef"/>
@@ -252,7 +277,7 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/ps2_keyboard_to_ascii_0" HWVERSION="1.0" INSTANCE="ps2_keyboard_to_ascii_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ps2_keyboard_to_ascii" VLNV="xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0">
+    <MODULE COREREVISION="1" FULLNAME="/ps2_keyboard_to_ascii_inst" HWVERSION="1.0" INSTANCE="ps2_keyboard_to_ascii_inst" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ps2_keyboard_to_ascii" VLNV="xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="clk_freq" VALUE="100000000"/>
@@ -276,39 +301,14 @@
             <CONNECTION INSTANCE="External_Ports" PORT="ps2_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="ascii_new" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_0_ascii_new">
+        <PORT DIR="O" NAME="ascii_new" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_inst_ascii_new">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="ps2_new"/>
+            <CONNECTION INSTANCE="TX_ps2_to_python_inst" PORT="ps2_new"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="7" NAME="ascii_code" RIGHT="0" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_0_ascii_code">
+        <PORT DIR="O" LEFT="7" NAME="ascii_code" RIGHT="0" SIGIS="undef" SIGNAME="ps2_keyboard_to_ascii_inst_ascii_code">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="p2_code"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="2" FULLNAME="/util_vector_logic_0" HWVERSION="2.0" INSTANCE="util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_OPERATION" VALUE="not"/>
-        <PARAMETER NAME="C_SIZE" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="Block_Diagram_util_vector_logic_0_0"/>
-        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_notgate.png"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_BTND">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="BTND"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_0_Res">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="I2C_user_logic_0" PORT="iReset_n"/>
-            <CONNECTION INSTANCE="TX_ps2_keyboard_logic_0" PORT="reset_n"/>
-            <CONNECTION INSTANCE="RX_UART_Python_0" PORT="reset_n"/>
+            <CONNECTION INSTANCE="TX_ps2_to_python_inst" PORT="p2_code"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "Block_Diagram_ps2_keyboard_to_ascii_0_0",
-    "cell_name": "ps2_keyboard_to_ascii_0",
+    "cell_name": "ps2_keyboard_to_ascii_inst",
     "component_reference": "xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_ps2_keyboard_to_ascii_0_0",

@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "Block_Diagram_TX_ps2_keyboard_logic_0_0",
-    "cell_name": "TX_ps2_keyboard_logic_0",
+    "cell_name": "TX_ps2_to_python_inst",
     "component_reference": "xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_TX_ps2_keyboard_logic_0_0",

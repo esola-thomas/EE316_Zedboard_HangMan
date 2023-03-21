@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "Block_Diagram_I2C_user_logic_0_0",
-    "cell_name": "I2C_user_logic_0",
+    "cell_name": "Segment_display_user_logic_inst",
     "component_reference": "xilinx.com:module_ref:I2C_user_logic:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../Zedboard_HangMan_Vivado.gen/sources_1/bd/Block_Diagram/ip/Block_Diagram_I2C_user_logic_0_0",
