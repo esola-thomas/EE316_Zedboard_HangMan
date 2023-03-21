@@ -44,6 +44,6 @@ begin
                 "0011" when hex_i = X"33" else  -- 3   
                 "0100" when hex_i = X"34" else  -- 4
                 "0101" when hex_i = X"35" else  -- 5
-                "0110" when hex_i = X"35" else  -- 6
+                "0110" when hex_i = X"36" else  -- 6
                 "1111";
 end Behavioral;

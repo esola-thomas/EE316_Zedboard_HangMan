@@ -90,7 +90,7 @@
       "util_vector_logic_0": {
         "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
         "xci_name": "Block_Diagram_util_vector_logic_0_0",
-        "xci_path": "ip\\Block_Diagram_util_vector_logic_0_0\\Block_Diagram_util_vector_logic_0_0.xci",
+        "xci_path": "ip/Block_Diagram_util_vector_logic_0_0/Block_Diagram_util_vector_logic_0_0.xci",
         "inst_hier_path": "util_vector_logic_0",
         "parameters": {
           "C_OPERATION": {
@@ -104,7 +104,7 @@
       "I2C_user_logic_0": {
         "vlnv": "xilinx.com:module_ref:I2C_user_logic:1.0",
         "xci_name": "Block_Diagram_I2C_user_logic_0_0",
-        "xci_path": "ip\\Block_Diagram_I2C_user_logic_0_0\\Block_Diagram_I2C_user_logic_0_0.xci",
+        "xci_path": "ip/Block_Diagram_I2C_user_logic_0_0/Block_Diagram_I2C_user_logic_0_0.xci",
         "inst_hier_path": "I2C_user_logic_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -145,7 +145,7 @@
       "blinky_0": {
         "vlnv": "xilinx.com:module_ref:blinky:1.0",
         "xci_name": "Block_Diagram_blinky_0_1",
-        "xci_path": "ip\\Block_Diagram_blinky_0_1\\Block_Diagram_blinky_0_1.xci",
+        "xci_path": "ip/Block_Diagram_blinky_0_1/Block_Diagram_blinky_0_1.xci",
         "inst_hier_path": "blinky_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -164,7 +164,7 @@
       "TX_ps2_keyboard_logic_0": {
         "vlnv": "xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0",
         "xci_name": "Block_Diagram_TX_ps2_keyboard_logic_0_0",
-        "xci_path": "ip\\Block_Diagram_TX_ps2_keyboard_logic_0_0\\Block_Diagram_TX_ps2_keyboard_logic_0_0.xci",
+        "xci_path": "ip/Block_Diagram_TX_ps2_keyboard_logic_0_0/Block_Diagram_TX_ps2_keyboard_logic_0_0.xci",
         "inst_hier_path": "TX_ps2_keyboard_logic_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -196,7 +196,7 @@
       "ps2_keyboard_to_ascii_0": {
         "vlnv": "xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0",
         "xci_name": "Block_Diagram_ps2_keyboard_to_ascii_0_0",
-        "xci_path": "ip\\Block_Diagram_ps2_keyboard_to_ascii_0_0\\Block_Diagram_ps2_keyboard_to_ascii_0_0.xci",
+        "xci_path": "ip/Block_Diagram_ps2_keyboard_to_ascii_0_0/Block_Diagram_ps2_keyboard_to_ascii_0_0.xci",
         "inst_hier_path": "ps2_keyboard_to_ascii_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -238,7 +238,7 @@
       "lcd_user_0": {
         "vlnv": "xilinx.com:module_ref:lcd_user:1.0",
         "xci_name": "Block_Diagram_lcd_user_0_0",
-        "xci_path": "ip\\Block_Diagram_lcd_user_0_0\\Block_Diagram_lcd_user_0_0.xci",
+        "xci_path": "ip/Block_Diagram_lcd_user_0_0/Block_Diagram_lcd_user_0_0.xci",
         "inst_hier_path": "lcd_user_0",
         "parameters": {
           "input_clk": {
@@ -306,7 +306,7 @@
       "RX_UART_Python_0": {
         "vlnv": "xilinx.com:module_ref:RX_UART_Python:1.0",
         "xci_name": "Block_Diagram_RX_UART_Python_0_0",
-        "xci_path": "ip\\Block_Diagram_RX_UART_Python_0_0\\Block_Diagram_RX_UART_Python_0_0.xci",
+        "xci_path": "ip/Block_Diagram_RX_UART_Python_0_0/Block_Diagram_RX_UART_Python_0_0.xci",
         "inst_hier_path": "RX_UART_Python_0",
         "reference_info": {
           "ref_type": "hdl",
