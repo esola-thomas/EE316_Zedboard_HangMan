@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 16 21:55:11 2023" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 21 14:18:20 2023" VIVADOVERSION="2022.2">
 
-  <SYSTEMINFO ARCH="zynq" BOARD="digilentinc.com:zedboard:part0:1.1" DEVICE="7z020" NAME="Block_Diagram" PACKAGE="clg484" SPEEDGRADE="-1"/>
+  <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="Block_Diagram" PACKAGE="clg484" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
     <PORT DIR="I" NAME="GCLK" SIGIS="undef" SIGNAME="External_Ports_GCLK">
