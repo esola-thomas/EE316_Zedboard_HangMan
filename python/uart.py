@@ -6,7 +6,7 @@ from time import sleep
 BAUD_RATE = 9600
 # PORT = '/dev/tty.usbmodem141301'
 # PORT = '/dev/tty.usbmodem141101'
-PORT = 'COM3'
+PORT = 'COM11'
 
 # Create UART object
 def create_uart():
@@ -59,6 +59,8 @@ def update_lcd(uart, text, row):
     
     message = "" + space + LCD_WRITE + text[:16] + space4
     write_uart(uart, message.encode('utf-8'))
+
+    sleep(0.5)
     
 # Read from UART
 def read_uart(uart):
