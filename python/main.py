@@ -19,10 +19,7 @@ USED_WORDS = []
 # Create UART
 uart = create_uart()
 
-update_seven_segment(uart, 0)
-update_lcd(uart, "New Game        ", 1)
-sleep(0.1)
-update_lcd(uart, "Hangman Game    ", 2)
+update_seven_segment(uart, 6)
 
 # Draw hangman
 def draw_hangman(guess):
@@ -83,15 +80,15 @@ def play_again(pa):
             # Reset game
             draw_hangman(-1)
             gui_text(-1, 400, 200)
-            main()
+            run_game()
         elif choice == "n" or choice == "N":
             print("Thank you for playing!")
             gui_text("Thank you for playing!", 400, 300, size=50, id=pa)
             # Display final score on LCD
-            print ("DEBUG Games Won"+  str(GAMES_WON) +  " of  Games Total" + str(GAMES_TOTAL))
+            LCD_message = "Won " + str(GAMES_WON) +  " of " + str(GAMES_TOTAL)
+            print ("DEBUG " + LCD_message)
             print (GAMES_TOTAL)
-            update_lcd(uart, "Won " + str(GAMES_WON) +  " of " + str(GAMES_TOTAL), 1)
-            sleep(0.1)
+            update_lcd(uart, LCD_message , 1)
             update_lcd(uart, "   GAME  OVER   ", 2)
             sleep(10)
             exit()
@@ -103,7 +100,7 @@ def play_again(pa):
         sleep(2)
         play_again(pa)
 
-def main():
+def run_game():
     global GAMES_TOTAL 
     global GAMES_WON 
     global USED_WORDS
@@ -186,14 +183,30 @@ def main():
                 incorrect.append(guess)
                 print("Incorrect")
             print(underscores)
+            LCD_message = underscores + " "*(len(underscores)-16)
+            update_lcd(uart, LCD_message, 1)
 
             # Update seven segment display
-            update_seven_segment(uart, len(incorrect))
+            update_seven_segment(uart, 6 - len(incorrect))
 
-            # Check if game is over
+            # Check if game is lost
             if len(incorrect) == MAX_GUESSES:
                 print(f"Sorry! The correct word was {word}")
 
+                LCD_message = f"Sorry! The correct word was {word}. You have solved {GAMES_WON + 1} out of {GAMES_TOTAL + 1}."
+                print(LCD_message)
+
+                # Update Scrolling LCD
+                LCD_message_buf = "                "
+                update_lcd(uart, LCD_message_buf , 1)
+                sleep(.2)
+                update_lcd(uart, LCD_message_buf, 2)
+                sleep(.2)
+                for i in range(0, len(LCD_message) - 1, 1):
+                    LCD_message_buf = LCD_message_buf[1:] + LCD_message[i]
+                    update_lcd(uart, LCD_message_buf, 1)
+                    sleep(0.5)
+                
                 draw_hangman(len(incorrect))
                 gui_text(underscores, 400, 200, color="red")
                 break
@@ -201,7 +214,20 @@ def main():
             # Check if game is won
             if len(correct) == len(letters):
                 print(f"You win: Word was {word}")
-                print(f"Well done! You have solved {GAMES_WON + 1} out of {GAMES_TOTAL + 1} games")
+
+                LCD_message = f"Well done! You have solved {GAMES_WON + 1} out of {GAMES_TOTAL + 1}."
+                print(LCD_message)
+
+                # Update Scrolling LCD
+                LCD_message_buf = "                "
+                update_lcd(uart, LCD_message_buf , 1)
+                sleep(.2)
+                update_lcd(uart, LCD_message_buf, 2)
+                sleep(.2)
+                for i in range(0, len(LCD_message) - 1, 1):
+                    LCD_message_buf = LCD_message_buf[1:] + LCD_message[i]
+                    update_lcd(uart, LCD_message_buf, 1)
+                    sleep(0.5)
                 # Update underscore text
                 gui_text(underscores, 400, 200, color="green", id=under_id)
                 WIN = True
@@ -224,7 +250,16 @@ def main():
             break
         pa = gui_text("Play again? (y/n)", 400, 300, size=50)
         print ("Play again? (y/n)")
+        update_lcd(uart, "New Game?       ", 1)
         play_again(pa)
-            
+
+
+def main():
+    new_game_pa = gui_text("New Game?", 400, 300, size=50)
+    print ("New Game? (y/n)")
+    update_lcd(uart, "NEW GAME?       ", 1)
+    update_lcd(uart, "                ", 2)
+    play_again(new_game_pa)
+
 # Run main
 main()
