@@ -245,7 +245,8 @@ def run_game():
         pa = gui_text("Play again? (y/n)", 400, 300, size=50)
         print ("Play again? (y/n)")
         update_lcd(uart, "New Game?       ", 1)
-        
+        LCD_message = word + " "*(len(word)-16)
+        update_lcd(uart, LCD_message, 2)
         play_again(pa)
 
 
