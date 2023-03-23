@@ -11,13 +11,13 @@
       "validated": "true"
     },
     "design_tree": {
-      "util_vector_logic_0": "",
-      "I2C_user_logic_0": "",
-      "blinky_0": "",
-      "TX_ps2_keyboard_logic_0": "",
-      "ps2_keyboard_to_ascii_0": "",
-      "lcd_user_0": "",
-      "RX_UART_Python_0": ""
+      "Not_inst": "",
+      "Segment_display_user_logic_inst": "",
+      "blinky_inst": "",
+      "TX_ps2_to_python_inst": "",
+      "ps2_keyboard_to_ascii_inst": "",
+      "lcd_user_logic_inst": "",
+      "RX_UART_Python_inst": ""
     },
     "ports": {
       "GCLK": {
@@ -87,11 +87,11 @@
       }
     },
     "components": {
-      "util_vector_logic_0": {
+      "Not_inst": {
         "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
         "xci_name": "Block_Diagram_util_vector_logic_0_0",
         "xci_path": "ip/Block_Diagram_util_vector_logic_0_0/Block_Diagram_util_vector_logic_0_0.xci",
-        "inst_hier_path": "util_vector_logic_0",
+        "inst_hier_path": "Not_inst",
         "parameters": {
           "C_OPERATION": {
             "value": "not"
@@ -101,11 +101,11 @@
           }
         }
       },
-      "I2C_user_logic_0": {
+      "Segment_display_user_logic_inst": {
         "vlnv": "xilinx.com:module_ref:I2C_user_logic:1.0",
         "xci_name": "Block_Diagram_I2C_user_logic_0_0",
         "xci_path": "ip/Block_Diagram_I2C_user_logic_0_0/Block_Diagram_I2C_user_logic_0_0.xci",
-        "inst_hier_path": "I2C_user_logic_0",
+        "inst_hier_path": "Segment_display_user_logic_inst",
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "I2C_user_logic",
@@ -142,11 +142,11 @@
           }
         }
       },
-      "blinky_0": {
+      "blinky_inst": {
         "vlnv": "xilinx.com:module_ref:blinky:1.0",
         "xci_name": "Block_Diagram_blinky_0_1",
         "xci_path": "ip/Block_Diagram_blinky_0_1/Block_Diagram_blinky_0_1.xci",
-        "inst_hier_path": "blinky_0",
+        "inst_hier_path": "blinky_inst",
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "blinky",
@@ -161,11 +161,11 @@
           }
         }
       },
-      "TX_ps2_keyboard_logic_0": {
+      "TX_ps2_to_python_inst": {
         "vlnv": "xilinx.com:module_ref:TX_ps2_keyboard_logic:1.0",
         "xci_name": "Block_Diagram_TX_ps2_keyboard_logic_0_0",
         "xci_path": "ip/Block_Diagram_TX_ps2_keyboard_logic_0_0/Block_Diagram_TX_ps2_keyboard_logic_0_0.xci",
-        "inst_hier_path": "TX_ps2_keyboard_logic_0",
+        "inst_hier_path": "TX_ps2_to_python_inst",
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "TX_ps2_keyboard_logic",
@@ -193,11 +193,11 @@
           }
         }
       },
-      "ps2_keyboard_to_ascii_0": {
+      "ps2_keyboard_to_ascii_inst": {
         "vlnv": "xilinx.com:module_ref:ps2_keyboard_to_ascii:1.0",
         "xci_name": "Block_Diagram_ps2_keyboard_to_ascii_0_0",
         "xci_path": "ip/Block_Diagram_ps2_keyboard_to_ascii_0_0/Block_Diagram_ps2_keyboard_to_ascii_0_0.xci",
-        "inst_hier_path": "ps2_keyboard_to_ascii_0",
+        "inst_hier_path": "ps2_keyboard_to_ascii_inst",
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "ps2_keyboard_to_ascii",
@@ -235,11 +235,11 @@
           }
         }
       },
-      "lcd_user_0": {
+      "lcd_user_logic_inst": {
         "vlnv": "xilinx.com:module_ref:lcd_user:1.0",
         "xci_name": "Block_Diagram_lcd_user_0_0",
         "xci_path": "ip/Block_Diagram_lcd_user_0_0/Block_Diagram_lcd_user_0_0.xci",
-        "inst_hier_path": "lcd_user_0",
+        "inst_hier_path": "lcd_user_logic_inst",
         "parameters": {
           "input_clk": {
             "value": "100000000"
@@ -303,11 +303,11 @@
           }
         }
       },
-      "RX_UART_Python_0": {
+      "RX_UART_Python_inst": {
         "vlnv": "xilinx.com:module_ref:RX_UART_Python:1.0",
         "xci_name": "Block_Diagram_RX_UART_Python_0_0",
         "xci_path": "ip/Block_Diagram_RX_UART_Python_0_0/Block_Diagram_RX_UART_Python_0_0.xci",
-        "inst_hier_path": "RX_UART_Python_0",
+        "inst_hier_path": "RX_UART_Python_inst",
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "RX_UART_Python",
@@ -351,116 +351,116 @@
       "BTND_1": {
         "ports": [
           "BTND",
-          "util_vector_logic_0/Op1"
+          "Not_inst/Op1"
         ]
       },
       "GCLK_1": {
         "ports": [
           "GCLK",
-          "I2C_user_logic_0/clk",
-          "blinky_0/GCLK",
-          "TX_ps2_keyboard_logic_0/clk",
-          "ps2_keyboard_to_ascii_0/clk",
-          "lcd_user_0/clk",
-          "RX_UART_Python_0/clk"
+          "Segment_display_user_logic_inst/clk",
+          "blinky_inst/GCLK",
+          "TX_ps2_to_python_inst/clk",
+          "ps2_keyboard_to_ascii_inst/clk",
+          "lcd_user_logic_inst/clk",
+          "RX_UART_Python_inst/clk"
         ]
       },
       "Net": {
         "ports": [
           "disp_scl",
-          "I2C_user_logic_0/scl"
+          "Segment_display_user_logic_inst/scl"
         ]
       },
       "Net1": {
         "ports": [
           "disp_sda",
-          "I2C_user_logic_0/sda"
+          "Segment_display_user_logic_inst/sda"
         ]
       },
       "Net2": {
         "ports": [
           "LCD_sda",
-          "lcd_user_0/SDA"
+          "lcd_user_logic_inst/SDA"
         ]
       },
       "Net3": {
         "ports": [
           "LCD_scl",
-          "lcd_user_0/SCL"
+          "lcd_user_logic_inst/SCL"
         ]
       },
       "RX_1": {
         "ports": [
           "RX",
-          "RX_UART_Python_0/RX"
+          "RX_UART_Python_inst/RX"
         ]
       },
       "RX_UART_Python_0_LCD_1": {
         "ports": [
-          "RX_UART_Python_0/LCD_1",
-          "lcd_user_0/row1"
+          "RX_UART_Python_inst/LCD_1",
+          "lcd_user_logic_inst/row1"
         ]
       },
       "RX_UART_Python_0_LCD_2": {
         "ports": [
-          "RX_UART_Python_0/LCD_2",
-          "lcd_user_0/row2"
+          "RX_UART_Python_inst/LCD_2",
+          "lcd_user_logic_inst/row2"
         ]
       },
       "RX_UART_Python_0_LCD_USER_reset": {
         "ports": [
-          "RX_UART_Python_0/LCD_USER_reset",
-          "lcd_user_0/reset"
+          "RX_UART_Python_inst/LCD_USER_reset",
+          "lcd_user_logic_inst/reset"
         ]
       },
       "RX_UART_Python_0_o_segment": {
         "ports": [
-          "RX_UART_Python_0/o_segment",
-          "I2C_user_logic_0/iData"
+          "RX_UART_Python_inst/o_segment",
+          "Segment_display_user_logic_inst/iData"
         ]
       },
       "TX_ps2_keyboard_logic_0_TX": {
         "ports": [
-          "TX_ps2_keyboard_logic_0/TX",
+          "TX_ps2_to_python_inst/TX",
           "TX"
         ]
       },
       "blinky_0_LD0": {
         "ports": [
-          "blinky_0/LD0",
+          "blinky_inst/LD0",
           "LD0"
         ]
       },
       "ps2_clk_1": {
         "ports": [
           "ps2_clk",
-          "ps2_keyboard_to_ascii_0/ps2_clk"
+          "ps2_keyboard_to_ascii_inst/ps2_clk"
         ]
       },
       "ps2_data_1": {
         "ports": [
           "ps2_data",
-          "ps2_keyboard_to_ascii_0/ps2_data"
+          "ps2_keyboard_to_ascii_inst/ps2_data"
         ]
       },
       "ps2_keyboard_to_ascii_0_ascii_code": {
         "ports": [
-          "ps2_keyboard_to_ascii_0/ascii_code",
-          "TX_ps2_keyboard_logic_0/p2_code"
+          "ps2_keyboard_to_ascii_inst/ascii_code",
+          "TX_ps2_to_python_inst/p2_code"
         ]
       },
       "ps2_keyboard_to_ascii_0_ascii_new": {
         "ports": [
-          "ps2_keyboard_to_ascii_0/ascii_new",
-          "TX_ps2_keyboard_logic_0/ps2_new"
+          "ps2_keyboard_to_ascii_inst/ascii_new",
+          "TX_ps2_to_python_inst/ps2_new"
         ]
       },
       "util_vector_logic_0_Res": {
         "ports": [
-          "util_vector_logic_0/Res",
-          "I2C_user_logic_0/iReset_n",
-          "TX_ps2_keyboard_logic_0/reset_n",
-          "RX_UART_Python_0/reset_n"
+          "Not_inst/Res",
+          "Segment_display_user_logic_inst/iReset_n",
+          "TX_ps2_to_python_inst/reset_n",
+          "RX_UART_Python_inst/reset_n"
         ]
       }
     }
